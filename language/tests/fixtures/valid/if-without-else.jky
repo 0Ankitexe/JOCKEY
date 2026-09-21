@@ -1,0 +1,9 @@
+module optional_else
+target ubuntu
+fn observe(ready: flag) -> report {
+    if ready {
+        forensic.audit.note(ready)
+    }
+    return report()
+}
+run observe on selected_endpoints

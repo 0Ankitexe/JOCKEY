@@ -1,0 +1,8 @@
+// Comments are syntax trivia and are not emitted into the AST.
+module comment_examples
+target ubuntu /* this program selects Ubuntu */
+fn inspect(target: endpoint) -> forensic_result {
+    /* Version 2 checks this planned signature; it does not collect anything. */
+    return forensic.system.profile(target)
+}
+run inspect on selected_endpoints

@@ -1,0 +1,8 @@
+module unsupported_loop
+target ubuntu
+fn inspect(items: list<item>) -> report {
+    while items {
+        inspect(items)
+    }
+    return report()
+}

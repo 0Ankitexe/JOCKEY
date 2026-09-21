@@ -1,0 +1,15 @@
+module nested_loops
+target windows | ubuntu
+fn scan(items: list<list<int>>) -> int {
+    for row in items {
+        for item in row {
+            if true { return item }
+        }
+    }
+    return 0
+}
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

@@ -1,0 +1,6 @@
+module apparent_target
+target windows
+fn ubuntu_named_operation(target: endpoint) -> report {
+    return ubuntu_adapter.only.collect(target)
+}
+run ubuntu_named_operation on selected_endpoints

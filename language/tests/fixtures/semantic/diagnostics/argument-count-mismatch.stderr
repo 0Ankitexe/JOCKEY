@@ -1,0 +1,5 @@
+error[argument-count-mismatch]: wrong argument count: expected 1, found 0
+  --> argument-count-mismatch.jky:4:5
+   |
+4 |     forensic.system.profile()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^ argument count mismatch

@@ -1,0 +1,5 @@
+error[return-type-mismatch]: return type mismatch: expected int, found bool
+  --> return-type-mismatch.jky:3:29
+   |
+3 | fn helper() -> int { return false }
+   |                             ^^^^^ return type mismatch

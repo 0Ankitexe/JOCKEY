@@ -1,0 +1,5 @@
+error[invalid-target-declaration]: target must be windows, ubuntu, or windows | ubuntu
+  --> language/tests/fixtures/invalid/reversed-target.jky:2:8
+   |
+2 | target ubuntu | windows
+   |        ^^^^^^^^^^^^^^^^ unsupported target

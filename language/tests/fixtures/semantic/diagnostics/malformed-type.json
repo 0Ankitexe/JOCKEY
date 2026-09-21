@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "malformed-type.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "malformed-type",
+      "message": "malformed type",
+      "location": {
+        "span": {
+          "start": 53,
+          "end": 59
+        },
+        "start": {
+          "line": 3,
+          "column": 19
+        },
+        "end": {
+          "line": 3,
+          "column": 25
+        },
+        "snippet": "fn inspect(items: list<>) -> report {",
+        "marker_start": 18,
+        "marker_width": 6
+      },
+      "label": "expected a type"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

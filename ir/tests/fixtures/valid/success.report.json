@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "fixture",
+  "fixture_id": "00000000-0000-4000-8000-000000000002",
+  "endpoint_id": "00000000-0000-4000-8000-000000000001",
+  "platform": "ubuntu",
+  "limits": {
+    "instructions": 100000,
+    "collection": 10000,
+    "work": 1000000,
+    "call_depth": 128
+  },
+  "accounting": {
+    "instructions": 2,
+    "work": 0,
+    "peak_call_depth": 1,
+    "peak_storage_bytes": 1024
+  },
+  "outcome": {
+    "status": "success",
+    "value": {
+      "kind": "forensic_result",
+      "value": {
+        "endpoint_id": "00000000-0000-4000-8000-000000000001",
+        "observed_at": "2026-09-18T00:00:00Z",
+        "system": {
+          "platform": "ubuntu",
+          "hostname": "fixture-ubuntu",
+          "release": "synthetic"
+        },
+        "indicators": [
+          {
+            "indicator_id": "00000000-0000-4000-8000-000000000020",
+            "kind": "fixture_match",
+            "message": "Authored fixture match; not live detection.",
+            "record_ids": [
+              "00000000-0000-4000-8000-000000000010",
+              "00000000-0000-4000-8000-000000000011"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

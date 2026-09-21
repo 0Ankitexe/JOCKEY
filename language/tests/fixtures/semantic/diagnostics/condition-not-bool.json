@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "condition-not-bool.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "condition-not-bool",
+      "message": "condition must have type bool; found int",
+      "location": {
+        "span": {
+          "start": 90,
+          "end": 91
+        },
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 4,
+          "column": 9
+        },
+        "snippet": "    if 1 { forensic.system.profile(target) }",
+        "marker_start": 7,
+        "marker_width": 1
+      },
+      "label": "expected bool"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/comment-only.jky:3:1
+   |
+3 | 
+   | ^ expected a complete program

@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_id": "00000000-0000-4000-8000-000000000102",
+  "endpoint": {
+    "endpoint_id": "00000000-0000-4000-8000-000000000101",
+    "platform": "windows",
+    "label": "fixture-windows"
+  },
+  "observed_at": "2026-09-18T00:00:00Z",
+  "providers": {
+    "forensic.system.profile": {
+      "status": "ok",
+      "value": {
+        "kind": "forensic_result",
+        "value": {
+          "endpoint_id": "00000000-0000-4000-8000-000000000101",
+          "observed_at": "2026-09-18T00:00:00Z",
+          "system": {
+            "platform": "windows",
+            "hostname": "fixture-windows",
+            "release": "synthetic"
+          },
+          "indicators": []
+        }
+      }
+    },
+    "forensic.process.list": {
+      "status": "ok",
+      "value": {
+        "kind": "list",
+        "element_type": {
+          "kind": "named",
+          "name": "process_record"
+        },
+        "values": [
+          {
+            "kind": "process_record",
+            "value": {
+              "record_id": "00000000-0000-4000-8000-000000000110",
+              "endpoint_id": "00000000-0000-4000-8000-000000000101",
+              "observed_at": "2026-09-18T00:00:00Z",
+              "pid": "1200",
+              "name": "fixture-demo",
+              "image_path": "C:\\fixture\\demo.exe"
+            }
+          }
+        ]
+      }
+    },
+    "forensic.network.connections": {
+      "status": "ok",
+      "value": {
+        "kind": "list",
+        "element_type": {
+          "kind": "named",
+          "name": "connection_record"
+        },
+        "values": [
+          {
+            "kind": "connection_record",
+            "value": {
+              "record_id": "00000000-0000-4000-8000-000000000111",
+              "endpoint_id": "00000000-0000-4000-8000-000000000101",
+              "observed_at": "2026-09-18T00:00:00Z",
+              "process_record_id": "00000000-0000-4000-8000-000000000110",
+              "protocol": "tcp",
+              "local_address": "192.0.2.10",
+              "local_port": 40000,
+              "remote_address": "198.51.100.20",
+              "remote_port": 443
+            }
+          }
+        ]
+      }
+    },
+    "forensic.indicator.correlate": {
+      "expected": {
+        "system": {
+          "kind": "forensic_result",
+          "value": {
+            "endpoint_id": "00000000-0000-4000-8000-000000000101",
+            "observed_at": "2026-09-18T00:00:00Z",
+            "system": {
+              "platform": "windows",
+              "hostname": "fixture-windows",
+              "release": "synthetic"
+            },
+            "indicators": []
+          }
+        },
+        "processes": {
+          "kind": "list",
+          "element_type": {
+            "kind": "named",
+            "name": "process_record"
+          },
+          "values": [
+            {
+              "kind": "process_record",
+              "value": {
+                "record_id": "00000000-0000-4000-8000-000000000110",
+                "endpoint_id": "00000000-0000-4000-8000-000000000101",
+                "observed_at": "2026-09-18T00:00:00Z",
+                "pid": "1200",
+                "name": "fixture-demo",
+                "image_path": "C:\\fixture\\demo.exe"
+              }
+            }
+          ]
+        },
+        "connections": {
+          "kind": "list",
+          "element_type": {
+            "kind": "named",
+            "name": "connection_record"
+          },
+          "values": [
+            {
+              "kind": "connection_record",
+              "value": {
+                "record_id": "00000000-0000-4000-8000-000000000111",
+                "endpoint_id": "00000000-0000-4000-8000-000000000101",
+                "observed_at": "2026-09-18T00:00:00Z",
+                "process_record_id": "00000000-0000-4000-8000-000000000110",
+                "protocol": "tcp",
+                "local_address": "192.0.2.10",
+                "local_port": 40000,
+                "remote_address": "198.51.100.20",
+                "remote_port": 443
+              }
+            }
+          ]
+        }
+      },
+      "outcome": {
+        "status": "ok",
+        "value": {
+          "kind": "forensic_result",
+          "value": {
+            "endpoint_id": "00000000-0000-4000-8000-000000000101",
+            "observed_at": "2026-09-18T00:00:00Z",
+            "system": null,
+            "indicators": [
+              {
+                "indicator_id": "00000000-0000-4000-8000-000000000120",
+                "kind": "fixture_match",
+                "message": "Authored fixture match; not live detection.",
+                "record_ids": [
+                  "00000000-0000-4000-8000-000000000110",
+                  "00000000-0000-4000-8000-000000000111"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

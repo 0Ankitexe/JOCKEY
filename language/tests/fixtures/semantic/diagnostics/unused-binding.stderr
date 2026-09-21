@@ -1,0 +1,11 @@
+warning[unused-binding]: local binding is never used: _unused
+  --> unused-binding.jky:5:9
+   |
+5 |     let _unused = 1
+   |         ^^^^^^^ unused binding
+
+warning[unused-binding]: local binding is never used: unused_loop
+  --> unused-binding.jky:6:9
+   |
+6 |     for unused_loop in forensic.process.list(target) { forensic.system.profile(target) }
+   |         ^^^^^^^^^^^ unused binding

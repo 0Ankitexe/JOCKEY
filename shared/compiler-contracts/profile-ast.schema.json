@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/language/v2/profile-ast.schema.json",
+  "title": "JOCKY profile-bearing AST document 2.0.0",
+  "description": "Used only for sources declaring profile lab. Ordinary sources keep the Version 1 AST envelope.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "program", "profile"],
+  "properties": {
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "program": {
+      "$ref": "https://jocky.dev/language/v1/ast-json.schema.json#/$defs/program"
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "name_span", "span"],
+      "properties": {
+        "name": {
+          "const": "lab"
+        },
+        "name_span": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+        },
+        "span": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+        }
+      }
+    }
+  }
+}

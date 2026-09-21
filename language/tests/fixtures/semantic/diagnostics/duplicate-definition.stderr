@@ -1,0 +1,5 @@
+error[duplicate-definition]: duplicate or reserved definition: main
+  --> duplicate-definition.jky:4:4
+   |
+4 | fn main(target: endpoint) -> forensic_result {
+   |    ^^^^ conflicting definition

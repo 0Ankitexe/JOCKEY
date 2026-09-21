@@ -1,0 +1,6 @@
+module recursive
+target windows | ubuntu
+fn first(target: endpoint) -> forensic_result { return second(target) }
+fn second(target: endpoint) -> forensic_result { return first(target) }
+fn main(target: endpoint) -> forensic_result { return first(target) }
+run main on selected_endpoints

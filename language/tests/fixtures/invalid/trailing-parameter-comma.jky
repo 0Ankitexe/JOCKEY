@@ -1,0 +1,5 @@
+module trailing_parameter
+target ubuntu
+fn inspect(target: endpoint,) -> report {
+    return report(target)
+}

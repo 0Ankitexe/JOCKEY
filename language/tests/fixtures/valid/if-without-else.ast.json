@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 183
+    },
+    "module": {
+      "name": {
+        "text": "optional_else",
+        "span": {
+          "start": 7,
+          "end": 20
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 20
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 28,
+            "end": 34
+          }
+        }
+      ],
+      "span": {
+        "start": 21,
+        "end": 34
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "observe",
+          "span": {
+            "start": 38,
+            "end": 45
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "ready",
+              "span": {
+                "start": 46,
+                "end": 51
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "flag",
+                "span": {
+                  "start": 53,
+                  "end": 57
+                }
+              },
+              "span": {
+                "start": 53,
+                "end": 57
+              }
+            },
+            "span": {
+              "start": 46,
+              "end": 57
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 62,
+              "end": 68
+            }
+          },
+          "span": {
+            "start": 62,
+            "end": 68
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "if",
+              "condition": {
+                "kind": "identifier",
+                "identifier": {
+                  "text": "ready",
+                  "span": {
+                    "start": 78,
+                    "end": 83
+                  }
+                },
+                "span": {
+                  "start": 78,
+                  "end": 83
+                }
+              },
+              "then_branch": {
+                "statements": [
+                  {
+                    "kind": "call",
+                    "callee": {
+                      "segments": [
+                        {
+                          "text": "forensic",
+                          "span": {
+                            "start": 94,
+                            "end": 102
+                          }
+                        },
+                        {
+                          "text": "audit",
+                          "span": {
+                            "start": 103,
+                            "end": 108
+                          }
+                        },
+                        {
+                          "text": "note",
+                          "span": {
+                            "start": 109,
+                            "end": 113
+                          }
+                        }
+                      ],
+                      "span": {
+                        "start": 94,
+                        "end": 113
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "kind": "identifier",
+                        "identifier": {
+                          "text": "ready",
+                          "span": {
+                            "start": 114,
+                            "end": 119
+                          }
+                        },
+                        "span": {
+                          "start": 114,
+                          "end": 119
+                        }
+                      }
+                    ],
+                    "span": {
+                      "start": 94,
+                      "end": 120
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 84,
+                  "end": 126
+                }
+              },
+              "else_branch": null,
+              "span": {
+                "start": 75,
+                "end": 126
+              }
+            },
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 138,
+                        "end": 144
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 138,
+                    "end": 144
+                  }
+                },
+                "arguments": [],
+                "span": {
+                  "start": 138,
+                  "end": 146
+                }
+              },
+              "span": {
+                "start": 131,
+                "end": 146
+              }
+            }
+          ],
+          "span": {
+            "start": 69,
+            "end": 148
+          }
+        },
+        "span": {
+          "start": 35,
+          "end": 148
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "observe",
+        "span": {
+          "start": 153,
+          "end": 160
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 164,
+        "end": 182
+      },
+      "span": {
+        "start": 149,
+        "end": 182
+      }
+    }
+  }
+}

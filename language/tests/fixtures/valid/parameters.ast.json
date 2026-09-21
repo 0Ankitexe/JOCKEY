@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 178
+    },
+    "module": {
+      "name": {
+        "text": "parameters",
+        "span": {
+          "start": 7,
+          "end": 17
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 17
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 25,
+            "end": 31
+          }
+        }
+      ],
+      "span": {
+        "start": 18,
+        "end": 31
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "compare",
+          "span": {
+            "start": 35,
+            "end": 42
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "left",
+              "span": {
+                "start": 43,
+                "end": 47
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "endpoint",
+                "span": {
+                  "start": 49,
+                  "end": 57
+                }
+              },
+              "span": {
+                "start": 49,
+                "end": 57
+              }
+            },
+            "span": {
+              "start": 43,
+              "end": 57
+            }
+          },
+          {
+            "name": {
+              "text": "right",
+              "span": {
+                "start": 59,
+                "end": 64
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "endpoint",
+                "span": {
+                  "start": 66,
+                  "end": 74
+                }
+              },
+              "span": {
+                "start": 66,
+                "end": 74
+              }
+            },
+            "span": {
+              "start": 59,
+              "end": 74
+            }
+          },
+          {
+            "name": {
+              "text": "enabled",
+              "span": {
+                "start": 76,
+                "end": 83
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "flag",
+                "span": {
+                  "start": 85,
+                  "end": 89
+                }
+              },
+              "span": {
+                "start": 85,
+                "end": 89
+              }
+            },
+            "span": {
+              "start": 76,
+              "end": 89
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 94,
+              "end": 100
+            }
+          },
+          "span": {
+            "start": 94,
+            "end": 100
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "build",
+                      "span": {
+                        "start": 114,
+                        "end": 119
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 114,
+                    "end": 119
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "left",
+                      "span": {
+                        "start": 120,
+                        "end": 124
+                      }
+                    },
+                    "span": {
+                      "start": 120,
+                      "end": 124
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "right",
+                      "span": {
+                        "start": 126,
+                        "end": 131
+                      }
+                    },
+                    "span": {
+                      "start": 126,
+                      "end": 131
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "enabled",
+                      "span": {
+                        "start": 133,
+                        "end": 140
+                      }
+                    },
+                    "span": {
+                      "start": 133,
+                      "end": 140
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 114,
+                  "end": 141
+                }
+              },
+              "span": {
+                "start": 107,
+                "end": 141
+              }
+            }
+          ],
+          "span": {
+            "start": 101,
+            "end": 143
+          }
+        },
+        "span": {
+          "start": 32,
+          "end": 143
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "compare",
+        "span": {
+          "start": 148,
+          "end": 155
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 159,
+        "end": 177
+      },
+      "span": {
+        "start": 144,
+        "end": 177
+      }
+    }
+  }
+}

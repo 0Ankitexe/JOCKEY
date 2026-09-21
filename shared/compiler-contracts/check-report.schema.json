@@ -1,0 +1,504 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/compiler/v1/check-report.schema.json",
+  "title": "JOCKY check report 1.0.0",
+  "description": "One complete JSON check outcome. Metadata exists only after full semantic validation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "file",
+    "diagnostics",
+    "truncated",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": ["valid", "invalid", "failure"]
+    },
+    "file": {
+      "type": ["string", "null"]
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    },
+    "truncated": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["errors", "warnings"],
+      "properties": {
+        "errors": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "boolean"
+        }
+      }
+    },
+    "metadata": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/metadata"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "valid"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/$defs/metadata"
+          },
+          "diagnostics": {
+            "maxItems": 32,
+            "items": {
+              "properties": {
+                "severity": {
+                  "const": "warning"
+                },
+                "code": {
+                  "enum": ["unreachable-code", "unused-binding"]
+                }
+              }
+            }
+          },
+          "truncated": {
+            "properties": {
+              "errors": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "invalid"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "null"
+          },
+          "diagnostics": {
+            "minItems": 1,
+            "contains": {
+              "properties": {
+                "severity": {
+                  "const": "error"
+                }
+              },
+              "required": ["severity"]
+            },
+            "items": {
+              "properties": {
+                "code": {
+                  "enum": [
+                    "unexpected-token",
+                    "missing-delimiter",
+                    "invalid-target-declaration",
+                    "malformed-type",
+                    "duplicate-top-level-run",
+                    "invalid-profile-declaration",
+                    "duplicate-definition",
+                    "unknown-name",
+                    "unknown-type",
+                    "not-callable",
+                    "argument-count-mismatch",
+                    "argument-type-mismatch",
+                    "return-type-mismatch",
+                    "missing-return",
+                    "condition-not-bool",
+                    "not-a-collection",
+                    "missing-run",
+                    "invalid-entry-point",
+                    "unsupported-target",
+                    "lab-profile-required",
+                    "unreachable-code",
+                    "unused-binding"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failure"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "metadata": {
+            "type": "null"
+          },
+          "diagnostics": {
+            "minItems": 1,
+            "contains": {
+              "properties": {
+                "severity": {
+                  "const": "error"
+                },
+                "code": {
+                  "enum": [
+                    "resource-limit",
+                    "invalid-command",
+                    "invalid-path-encoding",
+                    "input-not-found",
+                    "input-unreadable",
+                    "invalid-utf8",
+                    "invalid-registry",
+                    "module-not-found",
+                    "output-failure"
+                  ]
+                }
+              },
+              "required": ["severity", "code"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "diagnostics": {
+            "contains": {
+              "properties": {
+                "location": {
+                  "type": "object"
+                }
+              },
+              "required": ["location"]
+            }
+          }
+        },
+        "required": ["diagnostics"]
+      },
+      "then": {
+        "properties": {
+          "file": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line", "column"],
+      "properties": {
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "span",
+        "start",
+        "end",
+        "snippet",
+        "marker_start",
+        "marker_width"
+      ],
+      "properties": {
+        "span": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+        },
+        "start": {
+          "$ref": "#/$defs/position"
+        },
+        "end": {
+          "$ref": "#/$defs/position"
+        },
+        "snippet": {
+          "type": "string"
+        },
+        "marker_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "marker_width": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["severity", "code", "message", "location", "label"],
+      "properties": {
+        "severity": {
+          "enum": ["error", "warning"]
+        },
+        "code": {
+          "enum": [
+            "unexpected-token",
+            "missing-delimiter",
+            "invalid-target-declaration",
+            "malformed-type",
+            "duplicate-top-level-run",
+            "invalid-profile-declaration",
+            "duplicate-definition",
+            "unknown-name",
+            "unknown-type",
+            "not-callable",
+            "argument-count-mismatch",
+            "argument-type-mismatch",
+            "return-type-mismatch",
+            "missing-return",
+            "condition-not-bool",
+            "not-a-collection",
+            "missing-run",
+            "invalid-entry-point",
+            "unsupported-target",
+            "lab-profile-required",
+            "unreachable-code",
+            "unused-binding",
+            "resource-limit",
+            "invalid-command",
+            "invalid-path-encoding",
+            "input-not-found",
+            "input-unreadable",
+            "invalid-utf8",
+            "invalid-registry",
+            "module-not-found",
+            "output-failure"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/location"
+            }
+          ]
+        },
+        "label": {
+          "type": ["string", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "enum": ["unreachable-code", "unused-binding"]
+              }
+            },
+            "required": ["code"]
+          },
+          "then": {
+            "properties": {
+              "severity": {
+                "const": "warning"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "severity": {
+                "const": "error"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "enum": [
+                  "unexpected-token",
+                  "missing-delimiter",
+                  "invalid-target-declaration",
+                  "malformed-type",
+                  "duplicate-top-level-run",
+                  "invalid-profile-declaration",
+                  "duplicate-definition",
+                  "unknown-name",
+                  "unknown-type",
+                  "not-callable",
+                  "argument-count-mismatch",
+                  "argument-type-mismatch",
+                  "return-type-mismatch",
+                  "missing-return",
+                  "condition-not-bool",
+                  "not-a-collection",
+                  "missing-run",
+                  "invalid-entry-point",
+                  "unsupported-target",
+                  "lab-profile-required",
+                  "unreachable-code",
+                  "unused-binding"
+                ]
+              }
+            },
+            "required": ["code"]
+          },
+          "then": {
+            "properties": {
+              "location": {
+                "$ref": "#/$defs/location"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "enum": [
+                  "invalid-command",
+                  "invalid-path-encoding",
+                  "input-not-found",
+                  "input-unreadable",
+                  "invalid-utf8",
+                  "invalid-registry",
+                  "module-not-found",
+                  "output-failure"
+                ]
+              }
+            },
+            "required": ["code"]
+          },
+          "then": {
+            "properties": {
+              "location": {
+                "type": "null"
+              },
+              "label": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "functionMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "required_privilege",
+        "capabilities",
+        "supported_platforms",
+        "unavailable_dependencies"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/qualifiedName"
+        },
+        "required_privilege": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/privilege"
+        },
+        "capabilities": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/capabilities"
+        },
+        "supported_platforms": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platforms"
+        },
+        "unavailable_dependencies": {
+          "type": "array",
+          "maxItems": 513,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/qualifiedName"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "selected_targets",
+        "profile",
+        "entry",
+        "functions"
+      ],
+      "properties": {
+        "module": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/identifier"
+        },
+        "selected_targets": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platforms"
+        },
+        "profile": {
+          "enum": ["standard", "lab"]
+        },
+        "entry": {
+          "$ref": "#/$defs/functionMetadata"
+        },
+        "functions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1024,
+          "items": {
+            "$ref": "#/$defs/functionMetadata"
+          }
+        }
+      }
+    }
+  }
+}

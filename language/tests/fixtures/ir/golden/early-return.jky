@@ -1,0 +1,8 @@
+module early
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+    let dead = 42
+    forensic.process.list(target)
+}
+run main on selected_endpoints

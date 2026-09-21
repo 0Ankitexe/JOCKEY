@@ -1,0 +1,15 @@
+module cross_platform
+target windows | ubuntu
+
+// All calls remain unavailable: this demonstrates static metadata only.
+fn inventory(target: endpoint) -> list<driver_record> {
+    return forensic.driver.list(target)
+}
+
+fn investigate(target: endpoint) -> forensic_result {
+    inventory(target)
+    forensic.process.list(target)
+    return forensic.system.profile(target)
+}
+
+run investigate on selected_endpoints

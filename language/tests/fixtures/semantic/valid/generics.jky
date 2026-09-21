@@ -1,0 +1,7 @@
+module demo
+target windows | ubuntu
+fn helper(value: result<list<option<int>>, diagnostic_error>) -> result<list<option<int>>, diagnostic_error> { return value }
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

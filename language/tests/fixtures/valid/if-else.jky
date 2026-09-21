@@ -1,0 +1,10 @@
+module branches
+target windows
+fn decide(ready: flag) -> result_value {
+    if ready {
+        return accepted()
+    } else {
+        return rejected()
+    }
+}
+run decide on selected_endpoints

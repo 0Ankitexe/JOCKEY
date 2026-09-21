@@ -1,0 +1,6 @@
+module minimal
+target windows
+fn inspect(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run inspect on selected_endpoints

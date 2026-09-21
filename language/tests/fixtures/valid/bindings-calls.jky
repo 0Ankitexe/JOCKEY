@@ -1,0 +1,8 @@
+module bindings_calls
+target ubuntu
+fn gather(target: endpoint) -> report {
+    let profile = forensic.system.profile(target)
+    forensic.audit.record(profile)
+    return report(profile)
+}
+run gather on selected_endpoints

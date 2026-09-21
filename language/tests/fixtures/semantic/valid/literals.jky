@@ -1,0 +1,8 @@
+module demo
+target windows | ubuntu
+fn values(a: bool, b: int, c: string, d: duration) -> bool { return a }
+fn main(target: endpoint) -> forensic_result {
+    values(true, 9999999999999999999999999999999999999, "hello", 999999999999999999999999999999999ms)
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

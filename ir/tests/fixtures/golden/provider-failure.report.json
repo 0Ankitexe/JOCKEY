@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "fixture",
+  "fixture_id": "00000000-0000-4000-8000-000000000002",
+  "endpoint_id": "00000000-0000-4000-8000-000000000001",
+  "platform": "ubuntu",
+  "limits": {
+    "instructions": 100000,
+    "collection": 10000,
+    "work": 1000000,
+    "call_depth": 128
+  },
+  "accounting": {
+    "instructions": 1,
+    "work": 70,
+    "peak_call_depth": 1,
+    "peak_storage_bytes": 67744
+  },
+  "outcome": {
+    "status": "failure",
+    "error": {
+      "category": "provider",
+      "code": "PermissionDenied",
+      "function": "forensic.system.profile",
+      "origin": {
+        "instruction_id": "67b98737-81aa-8f41-a923-ca8f1fc17825",
+        "span": {
+          "start": 111,
+          "end": 142
+        }
+      }
+    }
+  }
+}

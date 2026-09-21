@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "unknown-type.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "unknown-type",
+      "message": "unknown type: mystery",
+      "location": {
+        "span": {
+          "start": 49,
+          "end": 56
+        },
+        "start": {
+          "line": 3,
+          "column": 14
+        },
+        "end": {
+          "line": 3,
+          "column": 21
+        },
+        "snippet": "fn helper(x: mystery) -> int { return 1 }",
+        "marker_start": 13,
+        "marker_width": 7
+      },
+      "label": "type is not defined"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

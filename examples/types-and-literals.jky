@@ -1,0 +1,20 @@
+module type_examples
+target ubuntu
+fn summarize(
+    records: list<option<process_record>>,
+    prior: option<result<forensic_result, diagnostic_error>>
+) -> list<option<process_record>> {
+    let label = "offline\ntriage"
+    let attempts = 999999999999999999999999999999
+    let timeout = 250ms
+    let enabled = true
+    describe(label, attempts, timeout, enabled)
+    return records
+}
+fn describe(label: string, attempts: int, timeout: duration, enabled: bool) -> string {
+    return label
+}
+fn inspect(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run inspect on selected_endpoints

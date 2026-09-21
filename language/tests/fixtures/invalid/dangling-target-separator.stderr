@@ -1,0 +1,5 @@
+error[invalid-target-declaration]: target must be windows, ubuntu, or windows | ubuntu
+  --> language/tests/fixtures/invalid/dangling-target-separator.jky:2:8
+   |
+2 | target windows |
+   |        ^^^^^^^^^ unsupported target

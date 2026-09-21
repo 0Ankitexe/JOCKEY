@@ -1,0 +1,483 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "examples/windows-events.jky",
+    "byte_length": 546,
+    "sha256": "3078d139341b82e06d66fbfa334d5ff49769d70ff7ede4c87339879a3214355f"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "windows_events",
+    "span": {
+      "start": 0,
+      "end": 21
+    }
+  },
+  "targets": [
+    "windows"
+  ],
+  "profile": null,
+  "entry": 1,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [
+      "system"
+    ],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [
+      "forensic.system.profile"
+    ],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [
+    {
+      "module": "forensic.event",
+      "name": "windows_log",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        },
+        {
+          "name": "channel",
+          "type": {
+            "kind": "named",
+            "name": "string"
+          }
+        },
+        {
+          "name": "since",
+          "type": {
+            "kind": "named",
+            "name": "timestamp"
+          }
+        },
+        {
+          "name": "until",
+          "type": {
+            "kind": "named",
+            "name": "timestamp"
+          }
+        },
+        {
+          "name": "limit",
+          "type": {
+            "kind": "named",
+            "name": "int"
+          }
+        }
+      ],
+      "result": {
+        "kind": "list",
+        "element": {
+          "kind": "named",
+          "name": "event_record"
+        }
+      },
+      "supported_platforms": [
+        "windows"
+      ],
+      "required_privilege": "elevated",
+      "capability": "events",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "InvalidInput",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "NotFound",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "Timeout",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    },
+    {
+      "module": "forensic.system",
+      "name": "profile",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        }
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "required_privilege": "user",
+      "capability": "system",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    }
+  ],
+  "constants": [
+    {
+      "kind": "string",
+      "value": "System"
+    },
+    {
+      "kind": "int",
+      "value": "100"
+    }
+  ],
+  "functions": [
+    {
+      "name": "events",
+      "span": {
+        "start": 166,
+        "end": 330
+      },
+      "parameters": [
+        0,
+        1,
+        2
+      ],
+      "result": {
+        "kind": "list",
+        "element": {
+          "kind": "named",
+          "name": "event_record"
+        }
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 176,
+            "end": 182
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "timestamp"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "since",
+          "span": {
+            "start": 194,
+            "end": 199
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "timestamp"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "until",
+          "span": {
+            "start": 212,
+            "end": 217
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "string"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 300,
+            "end": 308
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 324,
+            "end": 327
+          }
+        },
+        {
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "named",
+              "name": "event_record"
+            }
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 265,
+            "end": 328
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "aa8dc1e1-fc87-8d1f-95b5-5bfc2b6c57f9",
+              "span": {
+                "start": 300,
+                "end": 308
+              },
+              "op": "const",
+              "destination": 3,
+              "constant": 0
+            },
+            {
+              "id": "52b384d2-491f-85c8-856c-f69fd439ccce",
+              "span": {
+                "start": 324,
+                "end": 327
+              },
+              "op": "const",
+              "destination": 4,
+              "constant": 1
+            },
+            {
+              "id": "6d160180-93e9-8694-8805-5e9901be6fd7",
+              "span": {
+                "start": 265,
+                "end": 328
+              },
+              "op": "call",
+              "destination": 5,
+              "callee": {
+                "kind": "contract",
+                "contract": 0
+              },
+              "arguments": [
+                0,
+                3,
+                1,
+                2,
+                4
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "85ebe4ec-8d5a-8cc4-99cc-27e6886df7d1",
+              "span": {
+                "start": 258,
+                "end": 328
+              },
+              "op": "return",
+              "value": 5
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "elevated",
+        "capabilities": [
+          "events"
+        ],
+        "supported_platforms": [
+          "windows"
+        ],
+        "unavailable_dependencies": [
+          "forensic.event.windows_log"
+        ],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "investigate",
+      "span": {
+        "start": 408,
+        "end": 506
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 423,
+            "end": 429
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 473,
+            "end": 504
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "3978d484-d0f7-8c09-b04c-610a03dfb3ff",
+              "span": {
+                "start": 473,
+                "end": 504
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "contract",
+                "contract": 1
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "05018960-be8f-8ba1-b2b0-030c995b9aaa",
+              "span": {
+                "start": 466,
+                "end": 504
+              },
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [
+          "system"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.system.profile"
+        ],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

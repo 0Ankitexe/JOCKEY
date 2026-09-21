@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/trailing-parameter-comma.jky:3:29
+   |
+3 | fn inspect(target: endpoint,) -> report {
+   |                             ^ expected a complete program

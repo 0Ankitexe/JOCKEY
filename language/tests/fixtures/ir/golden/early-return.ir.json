@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "language/tests/fixtures/ir/golden/early-return.jky",
+    "byte_length": 212,
+    "sha256": "b7208e2d4dcea7b6ecc1e344e4d14a609d575825284b69847905b736fafd92c9"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "early",
+    "span": {
+      "start": 0,
+      "end": 12
+    }
+  },
+  "targets": [
+    "windows",
+    "ubuntu"
+  ],
+  "profile": null,
+  "entry": 0,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [
+      "system",
+      "processes"
+    ],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [
+      "forensic.process.list",
+      "forensic.system.profile"
+    ],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [
+    {
+      "module": "forensic.process",
+      "name": "list",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        }
+      ],
+      "result": {
+        "kind": "list",
+        "element": {
+          "kind": "named",
+          "name": "process_record"
+        }
+      },
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "required_privilege": "user",
+      "capability": "processes",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    },
+    {
+      "module": "forensic.system",
+      "name": "profile",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        }
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "required_privilege": "user",
+      "capability": "system",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    }
+  ],
+  "constants": [
+    {
+      "kind": "int",
+      "value": "42"
+    }
+  ],
+  "functions": [
+    {
+      "name": "main",
+      "span": {
+        "start": 37,
+        "end": 180
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 45,
+            "end": 51
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 95,
+            "end": 126
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 142,
+            "end": 144
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "local",
+          "name": "dead",
+          "span": {
+            "start": 135,
+            "end": 139
+          }
+        },
+        {
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "named",
+              "name": "process_record"
+            }
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 149,
+            "end": 178
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "c03714d8-541d-858b-ab2d-505fd9333400",
+              "span": {
+                "start": 95,
+                "end": 126
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "contract",
+                "contract": 1
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "73d6f71e-ea09-89b3-b174-f8cbad6d135d",
+              "span": {
+                "start": 88,
+                "end": 126
+              },
+              "op": "return",
+              "value": 1
+            },
+            {
+              "id": "f8db42b6-097d-8342-845c-965a601c1557",
+              "span": {
+                "start": 142,
+                "end": 144
+              },
+              "op": "const",
+              "destination": 2,
+              "constant": 0
+            },
+            {
+              "id": "25c5d178-04f5-8f1c-877e-2ef49cfe975c",
+              "span": {
+                "start": 131,
+                "end": 144
+              },
+              "op": "copy",
+              "destination": 3,
+              "source": 2
+            },
+            {
+              "id": "56c4ce1f-d5e8-8e16-ae8b-9416e9ee06c5",
+              "span": {
+                "start": 149,
+                "end": 178
+              },
+              "op": "call",
+              "destination": 4,
+              "callee": {
+                "kind": "contract",
+                "contract": 0
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [
+          "system",
+          "processes"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.process.list",
+          "forensic.system.profile"
+        ],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

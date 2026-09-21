@@ -1,0 +1,888 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/compiler/fixture/v1/values.schema.json",
+  "title": "JOCKY synthetic fixture values 1.0.0",
+  "description": "Closed compiler-test values, not operational evidence. Exact generic child types and context consistency require additional validation.",
+  "$ref": "#/$defs/value",
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "instructionId": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 64,
+      "pattern": "Z$"
+    },
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["endpoint_id", "platform", "label"],
+      "properties": {
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "platform": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platform"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      }
+    },
+    "system": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "hostname", "release"],
+      "properties": {
+        "platform": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platform"
+        },
+        "hostname": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "release": {
+          "type": "string",
+          "maxLength": 8388608
+        }
+      }
+    },
+    "indicator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["indicator_id", "kind", "message", "record_ids"],
+      "properties": {
+        "indicator_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "kind": {
+          "const": "fixture_match"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "record_ids": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10000,
+          "items": {
+            "type": "string",
+            "format": "uuid",
+            "minLength": 36,
+            "maxLength": 36,
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "forensicResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["endpoint_id", "observed_at", "system", "indicators"],
+      "properties": {
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "system": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/system"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "indicators": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/indicator"
+          }
+        }
+      }
+    },
+    "process_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "endpoint_id",
+        "observed_at",
+        "pid",
+        "name",
+        "image_path"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "pid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4194304,
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "not": {
+            "pattern": "[^0-9]"
+          }
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "image_path": {
+          "type": "string",
+          "maxLength": 8388608
+        }
+      }
+    },
+    "connection_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "endpoint_id",
+        "observed_at",
+        "process_record_id",
+        "protocol",
+        "local_address",
+        "local_port",
+        "remote_address",
+        "remote_port"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "process_record_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "protocol": {
+          "enum": ["tcp", "udp"]
+        },
+        "local_address": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ]
+        },
+        "local_port": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "remote_address": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ]
+        },
+        "remote_port": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "file_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "endpoint_id",
+        "observed_at",
+        "path",
+        "size",
+        "sha256"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "path": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "size": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4194304,
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "not": {
+            "pattern": "[^0-9]"
+          }
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "event_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "endpoint_id",
+        "observed_at",
+        "source",
+        "event_code",
+        "message"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "source": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "event_code": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 8388608
+        }
+      }
+    },
+    "persistence_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "endpoint_id",
+        "observed_at",
+        "mechanism",
+        "location",
+        "description"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "mechanism": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "location": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 8388608
+        }
+      }
+    },
+    "driver_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "endpoint_id",
+        "observed_at",
+        "name",
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "endpoint_id": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36,
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "path": {
+          "type": "string",
+          "maxLength": 8388608
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "value_bool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "bool"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      }
+    },
+    "value_int": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "int"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4194304,
+          "pattern": "^(0|[1-9][0-9]*|-[1-9][0-9]*)$",
+          "not": {
+            "pattern": "[^0-9-]"
+          }
+        }
+      }
+    },
+    "value_string": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "string"
+        },
+        "value": {
+          "type": "string",
+          "maxLength": 8388608
+        }
+      }
+    },
+    "value_bytes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "bytes"
+        },
+        "value": {
+          "type": "string",
+          "maxLength": 16777216,
+          "pattern": "^([0-9a-f]{2})*$",
+          "not": {
+            "pattern": "[^0-9a-f]"
+          }
+        }
+      }
+    },
+    "value_timestamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "timestamp"
+        },
+        "value": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 64,
+          "pattern": "Z$"
+        }
+      }
+    },
+    "value_endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "endpoint"
+        },
+        "value": {
+          "$ref": "#/$defs/endpoint"
+        }
+      }
+    },
+    "value_platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "platform"
+        },
+        "value": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platform"
+        }
+      }
+    },
+    "value_ip_address": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "ip_address"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ]
+        }
+      }
+    },
+    "value_path": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "path"
+        },
+        "value": {
+          "type": "string",
+          "maxLength": 8388608
+        }
+      }
+    },
+    "value_forensic_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "forensic_result"
+        },
+        "value": {
+          "$ref": "#/$defs/forensicResult"
+        }
+      }
+    },
+    "value_duration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "magnitude", "unit"],
+      "properties": {
+        "kind": {
+          "const": "duration"
+        },
+        "magnitude": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4194304,
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "not": {
+            "pattern": "[^0-9]"
+          }
+        },
+        "unit": {
+          "enum": ["ms", "s", "m", "h", "d"]
+        }
+      }
+    },
+    "value_diagnostic_error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "code"],
+      "properties": {
+        "kind": {
+          "const": "diagnostic_error"
+        },
+        "code": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/errorCode"
+        }
+      }
+    },
+    "value_process_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "process_record"
+        },
+        "value": {
+          "$ref": "#/$defs/process_record"
+        }
+      }
+    },
+    "value_connection_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "connection_record"
+        },
+        "value": {
+          "$ref": "#/$defs/connection_record"
+        }
+      }
+    },
+    "value_file_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "file_record"
+        },
+        "value": {
+          "$ref": "#/$defs/file_record"
+        }
+      }
+    },
+    "value_event_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "event_record"
+        },
+        "value": {
+          "$ref": "#/$defs/event_record"
+        }
+      }
+    },
+    "value_persistence_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "persistence_record"
+        },
+        "value": {
+          "$ref": "#/$defs/persistence_record"
+        }
+      }
+    },
+    "value_driver_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "driver_record"
+        },
+        "value": {
+          "$ref": "#/$defs/driver_record"
+        }
+      }
+    },
+    "value_list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "element_type", "values"],
+      "properties": {
+        "kind": {
+          "const": "list"
+        },
+        "element_type": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/type"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10000,
+          "items": {
+            "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value"
+          }
+        }
+      }
+    },
+    "value_option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "element_type", "value"],
+      "properties": {
+        "kind": {
+          "const": "option"
+        },
+        "element_type": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/type"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "value_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ok_type", "error_type", "variant", "value"],
+      "properties": {
+        "kind": {
+          "const": "result"
+        },
+        "ok_type": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/type"
+        },
+        "error_type": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/type"
+        },
+        "variant": {
+          "enum": ["ok", "error"]
+        },
+        "value": {
+          "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value"
+        }
+      }
+    },
+    "value": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/value_bool"
+        },
+        {
+          "$ref": "#/$defs/value_int"
+        },
+        {
+          "$ref": "#/$defs/value_string"
+        },
+        {
+          "$ref": "#/$defs/value_bytes"
+        },
+        {
+          "$ref": "#/$defs/value_timestamp"
+        },
+        {
+          "$ref": "#/$defs/value_endpoint"
+        },
+        {
+          "$ref": "#/$defs/value_platform"
+        },
+        {
+          "$ref": "#/$defs/value_ip_address"
+        },
+        {
+          "$ref": "#/$defs/value_path"
+        },
+        {
+          "$ref": "#/$defs/value_forensic_result"
+        },
+        {
+          "$ref": "#/$defs/value_duration"
+        },
+        {
+          "$ref": "#/$defs/value_diagnostic_error"
+        },
+        {
+          "$ref": "#/$defs/value_process_record"
+        },
+        {
+          "$ref": "#/$defs/value_connection_record"
+        },
+        {
+          "$ref": "#/$defs/value_file_record"
+        },
+        {
+          "$ref": "#/$defs/value_event_record"
+        },
+        {
+          "$ref": "#/$defs/value_persistence_record"
+        },
+        {
+          "$ref": "#/$defs/value_driver_record"
+        },
+        {
+          "$ref": "#/$defs/value_list"
+        },
+        {
+          "$ref": "#/$defs/value_option"
+        },
+        {
+          "$ref": "#/$defs/value_result"
+        }
+      ]
+    }
+  }
+}

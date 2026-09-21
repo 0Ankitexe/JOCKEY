@@ -1,0 +1,8 @@
+module lab_demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    forensic.lab.inspect()
+    return main(target)
+}
+profile lab
+run main on selected_endpoints

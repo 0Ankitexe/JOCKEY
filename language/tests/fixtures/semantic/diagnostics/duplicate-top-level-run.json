@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "duplicate-top-level-run.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "duplicate-top-level-run",
+      "message": "duplicate top-level run statement",
+      "location": {
+        "span": {
+          "start": 116,
+          "end": 119
+        },
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 4
+        },
+        "snippet": "run inspect on selected_endpoints",
+        "marker_start": 0,
+        "marker_width": 3
+      },
+      "label": "additional run statement"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

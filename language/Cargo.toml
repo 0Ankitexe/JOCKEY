@@ -1,0 +1,28 @@
+[package]
+name = "jocky-language"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "jockyc"
+path = "src/bin/jockyc.rs"
+
+[dependencies]
+pest.workspace = true
+pest_derive.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+jocky-shared = { path = "../shared" }
+jocky-forensic = { path = "../forensic-lib" }
+jocky-ir = { path = "../ir" }
+cap-std = { version = "=4.0.3", default-features = false }
+cap-fs-ext = { version = "=4.0.3", default-features = false, features = ["std"] }
+
+[dev-dependencies]
+jsonschema.workspace = true

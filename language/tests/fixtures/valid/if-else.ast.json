@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 193
+    },
+    "module": {
+      "name": {
+        "text": "branches",
+        "span": {
+          "start": 7,
+          "end": 15
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 15
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 23,
+            "end": 30
+          }
+        }
+      ],
+      "span": {
+        "start": 16,
+        "end": 30
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "decide",
+          "span": {
+            "start": 34,
+            "end": 40
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "ready",
+              "span": {
+                "start": 41,
+                "end": 46
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "flag",
+                "span": {
+                  "start": 48,
+                  "end": 52
+                }
+              },
+              "span": {
+                "start": 48,
+                "end": 52
+              }
+            },
+            "span": {
+              "start": 41,
+              "end": 52
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "result_value",
+            "span": {
+              "start": 57,
+              "end": 69
+            }
+          },
+          "span": {
+            "start": 57,
+            "end": 69
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "if",
+              "condition": {
+                "kind": "identifier",
+                "identifier": {
+                  "text": "ready",
+                  "span": {
+                    "start": 79,
+                    "end": 84
+                  }
+                },
+                "span": {
+                  "start": 79,
+                  "end": 84
+                }
+              },
+              "then_branch": {
+                "statements": [
+                  {
+                    "kind": "return",
+                    "value": {
+                      "kind": "call",
+                      "callee": {
+                        "segments": [
+                          {
+                            "text": "accepted",
+                            "span": {
+                              "start": 102,
+                              "end": 110
+                            }
+                          }
+                        ],
+                        "span": {
+                          "start": 102,
+                          "end": 110
+                        }
+                      },
+                      "arguments": [],
+                      "span": {
+                        "start": 102,
+                        "end": 112
+                      }
+                    },
+                    "span": {
+                      "start": 95,
+                      "end": 112
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 85,
+                  "end": 118
+                }
+              },
+              "else_branch": {
+                "statements": [
+                  {
+                    "kind": "return",
+                    "value": {
+                      "kind": "call",
+                      "callee": {
+                        "segments": [
+                          {
+                            "text": "rejected",
+                            "span": {
+                              "start": 141,
+                              "end": 149
+                            }
+                          }
+                        ],
+                        "span": {
+                          "start": 141,
+                          "end": 149
+                        }
+                      },
+                      "arguments": [],
+                      "span": {
+                        "start": 141,
+                        "end": 151
+                      }
+                    },
+                    "span": {
+                      "start": 134,
+                      "end": 151
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 124,
+                  "end": 157
+                }
+              },
+              "span": {
+                "start": 76,
+                "end": 157
+              }
+            }
+          ],
+          "span": {
+            "start": 70,
+            "end": 159
+          }
+        },
+        "span": {
+          "start": 31,
+          "end": 159
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "decide",
+        "span": {
+          "start": 164,
+          "end": 170
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 174,
+        "end": 192
+      },
+      "span": {
+        "start": 160,
+        "end": 192
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+module triage
+
+target windows | ubuntu
+
+fn investigate(target: endpoint) -> forensic_result {
+    let system = forensic.system.profile(target)
+    let processes = forensic.process.list(target)
+    let connections = forensic.network.connections(target)
+    let indicators = forensic.indicator.correlate(system, processes, connections)
+    return forensic_result(system, indicators)
+}
+
+run investigate on selected_endpoints

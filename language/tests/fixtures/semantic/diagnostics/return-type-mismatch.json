@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "return-type-mismatch.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "return-type-mismatch",
+      "message": "return type mismatch: expected int, found bool",
+      "location": {
+        "span": {
+          "start": 64,
+          "end": 69
+        },
+        "start": {
+          "line": 3,
+          "column": 29
+        },
+        "end": {
+          "line": 3,
+          "column": 34
+        },
+        "snippet": "fn helper() -> int { return false }",
+        "marker_start": 28,
+        "marker_width": 5
+      },
+      "label": "return type mismatch"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

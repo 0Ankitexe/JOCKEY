@@ -1,0 +1,8 @@
+module demo
+target windows | ubuntu
+fn forward(target: endpoint) -> forensic_result { return demo.later(target) }
+fn later(target: endpoint) -> forensic_result { return forensic.system.profile(target) }
+fn main(target: endpoint) -> forensic_result {
+    return forward(target)
+}
+run main on selected_endpoints

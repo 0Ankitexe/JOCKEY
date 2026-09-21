@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> unexpected-token.jky:4:5
+   |
+4 |     while items {
+   |     ^ expected a complete program

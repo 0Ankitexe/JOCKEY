@@ -1,0 +1,30 @@
+[
+  {
+    "file": "missing-endpoint.fixture.json",
+    "schema": "fixture-bundle.schema.json",
+    "reason": "missing required endpoint_id",
+    "validator": "required",
+    "path": "/endpoint"
+  },
+  {
+    "file": "unknown-value.json",
+    "schema": "fixture-values.schema.json",
+    "reason": "unknown value kind",
+    "validator": "oneOf",
+    "path": ""
+  },
+  {
+    "file": "unknown-opcode.ir.json",
+    "schema": "ir.schema.json",
+    "reason": "unknown instruction opcode",
+    "validator": "oneOf",
+    "path": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "partial-success.report.json",
+    "schema": "fixture-report.schema.json",
+    "reason": "failure must not contain a successful value",
+    "validator": "oneOf",
+    "path": "/outcome"
+  }
+]

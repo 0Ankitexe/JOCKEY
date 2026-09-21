@@ -1,0 +1,5 @@
+error[duplicate-top-level-run]: duplicate top-level run statement
+  --> duplicate-top-level-run.jky:7:1
+   |
+7 | run inspect on selected_endpoints
+   | ^^^ additional run statement

@@ -1,0 +1,8 @@
+module demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    if true { let hidden = 1 }
+    let x = hidden
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

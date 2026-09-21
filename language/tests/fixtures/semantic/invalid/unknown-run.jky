@@ -1,0 +1,6 @@
+module demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run absent on selected_endpoints

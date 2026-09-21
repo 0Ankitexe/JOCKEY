@@ -1,0 +1,7 @@
+module demo
+target windows | ubuntu
+fn bad(target: endpoint) -> int { return 1 }
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run bad on selected_endpoints

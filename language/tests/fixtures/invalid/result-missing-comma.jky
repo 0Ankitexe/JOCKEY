@@ -1,0 +1,5 @@
+module result_comma
+target ubuntu
+fn inspect() -> result<report failure> {
+    return report()
+}

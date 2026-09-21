@@ -1,0 +1,11 @@
+warning[unused-binding]: local binding is never used: x
+  --> unknown-name.jky:4:9
+   |
+4 |     let x = unknown
+   |         ^ unused binding
+
+error[unknown-name]: unknown name: unknown
+  --> unknown-name.jky:4:13
+   |
+4 |     let x = unknown
+   |             ^^^^^^^ name is not defined

@@ -1,0 +1,5 @@
+module demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}

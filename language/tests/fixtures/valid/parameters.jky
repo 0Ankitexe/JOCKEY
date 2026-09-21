@@ -1,0 +1,6 @@
+module parameters
+target ubuntu
+fn compare(left: endpoint, right: endpoint, enabled: flag) -> report {
+    return build(left, right, enabled)
+}
+run compare on selected_endpoints

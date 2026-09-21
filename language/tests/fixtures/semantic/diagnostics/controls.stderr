@@ -1,0 +1,5 @@
+error[condition-not-bool]: condition must have type bool; found string
+  --> controls.jky:4:8
+   |
+4 |     if "é\u{001B}" {}
+   |        ^^^^^^^^^^^ expected bool

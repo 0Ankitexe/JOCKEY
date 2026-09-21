@@ -1,0 +1,16 @@
+{
+  "description": "Fields use the IR ID framing recipe in ir.md; this is not a compiled triage artifact.",
+  "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "label": "hand-authored.jky",
+  "language_version": "2.0.0",
+  "ir_schema_version": "1.0.0",
+  "registry_schema_version": "1.0.0",
+  "registry_fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc",
+  "seed": "0",
+  "function": 0,
+  "region": 0,
+  "instructions": [
+    "9588b0be-5133-8fa1-91b9-1b78192d24f3",
+    "885c2df3-1c82-8206-b375-eaf27e812a2b"
+  ]
+}

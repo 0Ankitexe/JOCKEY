@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/missing-return-value.jky:4:5
+   |
+4 |     return
+   |     ^^^^^^ expected an expression

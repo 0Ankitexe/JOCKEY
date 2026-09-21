@@ -1,0 +1,5 @@
+error[malformed-type]: malformed type
+  --> language/tests/fixtures/invalid/list-missing-argument.jky:3:19
+   |
+3 | fn inspect(items: list<>) -> report {
+   |                   ^^^^^^ expected a type

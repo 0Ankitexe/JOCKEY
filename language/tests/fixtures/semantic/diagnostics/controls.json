@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "controls.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "condition-not-bool",
+      "message": "condition must have type bool; found string",
+      "location": {
+        "span": {
+          "start": 77,
+          "end": 82
+        },
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 4,
+          "column": 12
+        },
+        "snippet": "    if \"é\\u{001B}\" {}",
+        "marker_start": 7,
+        "marker_width": 11
+      },
+      "label": "expected bool"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

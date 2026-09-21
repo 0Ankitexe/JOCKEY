@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 487
+    },
+    "module": {
+      "name": {
+        "text": "literal_forms",
+        "span": {
+          "start": 7,
+          "end": 20
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 20
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 28,
+            "end": 34
+          }
+        }
+      ],
+      "span": {
+        "start": 21,
+        "end": 34
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "literals",
+          "span": {
+            "start": 38,
+            "end": 46
+          }
+        },
+        "parameters": [],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 52,
+              "end": 58
+            }
+          },
+          "span": {
+            "start": 52,
+            "end": 58
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "let",
+              "name": {
+                "text": "text",
+                "span": {
+                  "start": 69,
+                  "end": 73
+                }
+              },
+              "value": {
+                "kind": "string",
+                "value": "line\nquote: \" slash: \\ tab:\t carriage:\r",
+                "span": {
+                  "start": 76,
+                  "end": 122
+                }
+              },
+              "span": {
+                "start": 65,
+                "end": 122
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "positive",
+                "span": {
+                  "start": 131,
+                  "end": 139
+                }
+              },
+              "value": {
+                "kind": "integer",
+                "lexeme": "999999999999999999999999999999999999999999",
+                "span": {
+                  "start": 142,
+                  "end": 184
+                }
+              },
+              "span": {
+                "start": 127,
+                "end": 184
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "negative",
+                "span": {
+                  "start": 193,
+                  "end": 201
+                }
+              },
+              "value": {
+                "kind": "integer",
+                "lexeme": "-999999999999999999999999999999999999999999",
+                "span": {
+                  "start": 204,
+                  "end": 247
+                }
+              },
+              "span": {
+                "start": 189,
+                "end": 247
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "enabled",
+                "span": {
+                  "start": 256,
+                  "end": 263
+                }
+              },
+              "value": {
+                "kind": "boolean",
+                "value": true,
+                "span": {
+                  "start": 266,
+                  "end": 270
+                }
+              },
+              "span": {
+                "start": 252,
+                "end": 270
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "disabled",
+                "span": {
+                  "start": 279,
+                  "end": 287
+                }
+              },
+              "value": {
+                "kind": "boolean",
+                "value": false,
+                "span": {
+                  "start": 290,
+                  "end": 295
+                }
+              },
+              "span": {
+                "start": 275,
+                "end": 295
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "timeout",
+                "span": {
+                  "start": 304,
+                  "end": 311
+                }
+              },
+              "value": {
+                "kind": "duration",
+                "magnitude": "999999999999999999999999999999999999999999",
+                "unit": "ms",
+                "span": {
+                  "start": 314,
+                  "end": 358
+                }
+              },
+              "span": {
+                "start": 300,
+                "end": 358
+              }
+            },
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 370,
+                        "end": 376
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 370,
+                    "end": 376
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "text",
+                      "span": {
+                        "start": 377,
+                        "end": 381
+                      }
+                    },
+                    "span": {
+                      "start": 377,
+                      "end": 381
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "positive",
+                      "span": {
+                        "start": 383,
+                        "end": 391
+                      }
+                    },
+                    "span": {
+                      "start": 383,
+                      "end": 391
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "negative",
+                      "span": {
+                        "start": 393,
+                        "end": 401
+                      }
+                    },
+                    "span": {
+                      "start": 393,
+                      "end": 401
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "enabled",
+                      "span": {
+                        "start": 403,
+                        "end": 410
+                      }
+                    },
+                    "span": {
+                      "start": 403,
+                      "end": 410
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "disabled",
+                      "span": {
+                        "start": 412,
+                        "end": 420
+                      }
+                    },
+                    "span": {
+                      "start": 412,
+                      "end": 420
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "timeout",
+                      "span": {
+                        "start": 422,
+                        "end": 429
+                      }
+                    },
+                    "span": {
+                      "start": 422,
+                      "end": 429
+                    }
+                  },
+                  {
+                    "kind": "integer",
+                    "lexeme": "0",
+                    "span": {
+                      "start": 431,
+                      "end": 432
+                    }
+                  },
+                  {
+                    "kind": "duration",
+                    "magnitude": "0",
+                    "unit": "s",
+                    "span": {
+                      "start": 434,
+                      "end": 436
+                    }
+                  },
+                  {
+                    "kind": "duration",
+                    "magnitude": "2",
+                    "unit": "m",
+                    "span": {
+                      "start": 438,
+                      "end": 440
+                    }
+                  },
+                  {
+                    "kind": "duration",
+                    "magnitude": "3",
+                    "unit": "h",
+                    "span": {
+                      "start": 442,
+                      "end": 444
+                    }
+                  },
+                  {
+                    "kind": "duration",
+                    "magnitude": "4",
+                    "unit": "d",
+                    "span": {
+                      "start": 446,
+                      "end": 448
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 370,
+                  "end": 449
+                }
+              },
+              "span": {
+                "start": 363,
+                "end": 449
+              }
+            }
+          ],
+          "span": {
+            "start": 59,
+            "end": 451
+          }
+        },
+        "span": {
+          "start": 35,
+          "end": 451
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "literals",
+        "span": {
+          "start": 456,
+          "end": 464
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 468,
+        "end": 486
+      },
+      "span": {
+        "start": 452,
+        "end": 486
+      }
+    }
+  }
+}

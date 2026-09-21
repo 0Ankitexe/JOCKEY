@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "not-callable.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "not-callable",
+      "message": "value is not callable: f",
+      "location": {
+        "span": {
+          "start": 101,
+          "end": 102
+        },
+        "start": {
+          "line": 5,
+          "column": 5
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        },
+        "snippet": "    f(target)",
+        "marker_start": 4,
+        "marker_width": 1
+      },
+      "label": "expected a function"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

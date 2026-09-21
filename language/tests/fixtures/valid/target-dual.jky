@@ -1,0 +1,6 @@
+module dual
+target windows | ubuntu
+fn inspect() -> report {
+    return report()
+}
+run inspect on selected_endpoints

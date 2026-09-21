@@ -1,0 +1,253 @@
+// Canonical JOCKY Version 1 acceptance grammar.
+//
+// Trivia is deliberately explicit. Do not add Pest's specially named
+// WHITESPACE or COMMENT rules: required `gap` positions must remain observable.
+
+program = {
+    SOI
+    ~ trivia ~ module_declaration
+    ~ trivia ~ target_declaration
+    ~ trivia ~ function_declaration
+    ~ (trivia ~ function_declaration)*
+    ~ (trivia ~ run_statement)?
+    ~ trivia ~ EOI
+}
+
+// Separate strict entry for V2; the legacy program entry remains unchanged.
+program_v2 = {
+    SOI ~ trivia ~ module_declaration ~ trivia ~ target_declaration
+    ~ (trivia ~ lab_profile_declaration)? ~ trivia ~ function_declaration
+    ~ (trivia ~ function_declaration)* ~ (trivia ~ run_statement)? ~ trivia ~ EOI
+}
+lab_profile_declaration = { profile_keyword ~ gap ~ lab_keyword }
+profile_keyword = @{ "profile" ~ !identifier_continue }
+lab_keyword = @{ "lab" ~ !identifier_continue }
+lab_profile_entry = { SOI ~ trivia ~ lab_profile_declaration ~ trivia ~ EOI }
+
+module_declaration = {
+    module_keyword ~ gap ~ identifier
+}
+
+target_declaration = {
+    target_keyword ~ gap ~ target_selector
+}
+
+// Pest choice is ordered: recognize the canonical dual target before either
+// single-platform spelling.
+target_selector = {
+      windows_keyword ~ trivia ~ "|" ~ trivia ~ ubuntu_keyword
+    | windows_keyword
+    | ubuntu_keyword
+}
+
+function_declaration = {
+    fn_keyword ~ gap ~ identifier ~ trivia
+    ~ "(" ~ trivia ~ parameter_list? ~ trivia ~ ")" ~ trivia
+    ~ "->" ~ trivia ~ type_reference ~ trivia ~ block
+}
+
+parameter_list = {
+    parameter ~ (trivia ~ "," ~ trivia ~ parameter)*
+}
+
+parameter = {
+    identifier ~ trivia ~ ":" ~ trivia ~ type_reference
+}
+
+// Generic spellings precede named types. Their keywords are reserved, so a
+// bare `list`, `option`, or `result` is never widened into a named type.
+type_reference = {
+      list_type
+    | option_type
+    | result_type
+    | named_type
+}
+
+named_type = { !generic_type_keyword ~ identifier }
+generic_type_keyword = _{ list_keyword | option_keyword | result_keyword }
+
+list_type = {
+    list_keyword ~ trivia ~ "<" ~ trivia ~ type_reference ~ trivia ~ ">"
+}
+
+option_type = {
+    option_keyword ~ trivia ~ "<" ~ trivia ~ type_reference ~ trivia ~ ">"
+}
+
+result_type = {
+    result_keyword ~ trivia ~ "<" ~ trivia
+    ~ type_reference ~ trivia ~ "," ~ trivia ~ type_reference
+    ~ trivia ~ ">"
+}
+
+block = {
+    "{" ~ trivia ~ (statement ~ trivia)* ~ "}"
+}
+
+statement = {
+      let_statement
+    | if_statement
+    | for_statement
+    | return_statement
+    | call_statement
+}
+
+let_statement = {
+    let_keyword ~ gap ~ identifier ~ trivia ~ "=" ~ trivia ~ expression
+}
+
+call_statement = { call_expression }
+
+if_statement = {
+    if_keyword ~ gap ~ expression ~ trivia ~ block
+    ~ (trivia ~ else_keyword ~ trivia ~ block)?
+}
+
+for_statement = {
+    for_keyword ~ gap ~ identifier ~ gap ~ in_keyword ~ gap
+    ~ expression ~ trivia ~ block
+}
+
+return_statement = {
+    return_keyword ~ gap ~ expression
+}
+
+// Calls and durations must precede their valid identifier/integer prefixes.
+expression = {
+      call_expression
+    | duration_literal
+    | integer_literal
+    | string_literal
+    | boolean_literal
+    | identifier_expression
+}
+
+identifier_expression = { identifier }
+
+call_expression = {
+    qualified_name ~ trivia ~ "(" ~ trivia ~ argument_list? ~ trivia ~ ")"
+}
+
+argument_list = {
+    expression ~ (trivia ~ "," ~ trivia ~ expression)*
+}
+
+qualified_name = {
+    identifier ~ (trivia ~ "." ~ trivia ~ identifier)*
+}
+
+run_statement = {
+    run_keyword ~ gap ~ identifier ~ gap ~ on_keyword ~ gap
+    ~ selected_endpoints_keyword
+}
+
+boolean_literal = { true_keyword | false_keyword }
+
+integer_literal = @{
+    ("0" | nonzero_digit ~ digit* | "-" ~ nonzero_digit ~ digit*)
+    ~ !identifier_continue
+}
+
+duration_literal = ${
+    duration_magnitude ~ duration_unit ~ !identifier_continue
+}
+
+duration_magnitude = @{ "0" | nonzero_digit ~ digit* }
+
+// Ordered so `ms` cannot be consumed as `m` followed by an unexpected `s`.
+duration_unit = @{ "ms" | "s" | "m" | "h" | "d" }
+
+string_literal = @{
+    "\"" ~ (string_escape | string_character)* ~ "\""
+}
+
+string_escape = _{ "\\\"" | "\\\\" | "\\n" | "\\r" | "\\t" }
+string_character = _{ !("\"" | "\\" | "\r" | "\n") ~ ANY }
+
+identifier = @{
+    !reserved_word ~ identifier_start ~ identifier_continue*
+}
+
+identifier_start = _{ ASCII_ALPHA | "_" }
+identifier_continue = _{ ASCII_ALPHA | ASCII_DIGIT | "_" }
+digit = _{ ASCII_DIGIT }
+nonzero_digit = _{ '1'..'9' }
+
+reserved_word = _{
+      module_keyword
+    | windows_keyword
+    | ubuntu_keyword
+    | fn_keyword
+    | let_keyword
+    | if_keyword
+    | else_keyword
+    | for_keyword
+    | in_keyword
+    | return_keyword
+    | run_keyword
+    | on_keyword
+    | selected_endpoints_keyword
+    | true_keyword
+    | false_keyword
+}
+
+// Every keyword includes its identifier boundary in the atomic token.
+module_keyword = @{ "module" ~ !identifier_continue }
+target_keyword = @{ "target" ~ !identifier_continue }
+windows_keyword = @{ "windows" ~ !identifier_continue }
+ubuntu_keyword = @{ "ubuntu" ~ !identifier_continue }
+fn_keyword = @{ "fn" ~ !identifier_continue }
+let_keyword = @{ "let" ~ !identifier_continue }
+if_keyword = @{ "if" ~ !identifier_continue }
+else_keyword = @{ "else" ~ !identifier_continue }
+for_keyword = @{ "for" ~ !identifier_continue }
+in_keyword = @{ "in" ~ !identifier_continue }
+return_keyword = @{ "return" ~ !identifier_continue }
+run_keyword = @{ "run" ~ !identifier_continue }
+on_keyword = @{ "on" ~ !identifier_continue }
+selected_endpoints_keyword = @{ "selected_endpoints" ~ !identifier_continue }
+true_keyword = @{ "true" ~ !identifier_continue }
+false_keyword = @{ "false" ~ !identifier_continue }
+list_keyword = @{ "list" ~ !identifier_continue }
+option_keyword = @{ "option" ~ !identifier_continue }
+result_keyword = @{ "result" ~ !identifier_continue }
+
+// Explicit trivia: spaces, horizontal tabs, LF/CRLF, and non-nested comments.
+trivia = _{ trivia_item* }
+gap = _{ trivia_item+ }
+trivia_item = _{ " " | "\t" | line_ending | line_comment | block_comment }
+line_ending = _{ "\r\n" | "\n" }
+line_comment = _{ "//" ~ (!("\r" | "\n") ~ ANY)* ~ line_ending? }
+block_comment = _{ "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
+
+// Strict, fully anchored fragment rules used only after whole-program failure
+// (and by unit tests). None is reachable as an alternative from `program`.
+module_declaration_entry = {
+    SOI ~ trivia ~ module_declaration ~ trivia ~ EOI
+}
+target_declaration_entry = {
+    SOI ~ trivia ~ target_declaration ~ trivia ~ EOI
+}
+function_declaration_entry = {
+    SOI ~ trivia ~ function_declaration ~ trivia ~ EOI
+}
+run_statement_entry = {
+    SOI ~ trivia ~ run_statement ~ trivia ~ EOI
+}
+top_level_item_entry = {
+    SOI ~ trivia
+    ~ (module_declaration | target_declaration | function_declaration | run_statement)
+    ~ trivia ~ EOI
+}
+statement_entry = { SOI ~ trivia ~ statement ~ trivia ~ EOI }
+block_entry = { SOI ~ trivia ~ block ~ trivia ~ EOI }
+type_reference_entry = { SOI ~ trivia ~ type_reference ~ trivia ~ EOI }
+expression_entry = { SOI ~ trivia ~ expression ~ trivia ~ EOI }
+qualified_name_entry = { SOI ~ qualified_name ~ EOI }
+identifier_entry = { SOI ~ identifier ~ EOI }
+integer_literal_entry = { SOI ~ integer_literal ~ EOI }
+duration_literal_entry = { SOI ~ duration_literal ~ EOI }
+string_literal_entry = { SOI ~ string_literal ~ EOI }
+line_comment_entry = { SOI ~ line_comment ~ EOI }
+block_comment_entry = { SOI ~ block_comment ~ EOI }
+trivia_entry = { SOI ~ trivia ~ EOI }

@@ -1,0 +1,5 @@
+error[unsupported-target]: function does not support every declared target: forensic.event.windows_log
+  --> unsupported-target.jky:5:12
+   |
+5 |     return forensic.event.windows_log(target, "System", since, until, 10)
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^ target support mismatch

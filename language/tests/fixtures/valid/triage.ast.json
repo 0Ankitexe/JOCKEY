@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 422
+    },
+    "module": {
+      "name": {
+        "text": "triage",
+        "span": {
+          "start": 7,
+          "end": 13
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 13
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 22,
+            "end": 29
+          }
+        },
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 32,
+            "end": 38
+          }
+        }
+      ],
+      "span": {
+        "start": 15,
+        "end": 38
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "investigate",
+          "span": {
+            "start": 43,
+            "end": 54
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "target",
+              "span": {
+                "start": 55,
+                "end": 61
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "endpoint",
+                "span": {
+                  "start": 63,
+                  "end": 71
+                }
+              },
+              "span": {
+                "start": 63,
+                "end": 71
+              }
+            },
+            "span": {
+              "start": 55,
+              "end": 71
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "forensic_result",
+            "span": {
+              "start": 76,
+              "end": 91
+            }
+          },
+          "span": {
+            "start": 76,
+            "end": 91
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "let",
+              "name": {
+                "text": "system",
+                "span": {
+                  "start": 102,
+                  "end": 108
+                }
+              },
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "forensic",
+                      "span": {
+                        "start": 111,
+                        "end": 119
+                      }
+                    },
+                    {
+                      "text": "system",
+                      "span": {
+                        "start": 120,
+                        "end": 126
+                      }
+                    },
+                    {
+                      "text": "profile",
+                      "span": {
+                        "start": 127,
+                        "end": 134
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 111,
+                    "end": 134
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "target",
+                      "span": {
+                        "start": 135,
+                        "end": 141
+                      }
+                    },
+                    "span": {
+                      "start": 135,
+                      "end": 141
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 111,
+                  "end": 142
+                }
+              },
+              "span": {
+                "start": 98,
+                "end": 142
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "processes",
+                "span": {
+                  "start": 151,
+                  "end": 160
+                }
+              },
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "forensic",
+                      "span": {
+                        "start": 163,
+                        "end": 171
+                      }
+                    },
+                    {
+                      "text": "process",
+                      "span": {
+                        "start": 172,
+                        "end": 179
+                      }
+                    },
+                    {
+                      "text": "list",
+                      "span": {
+                        "start": 180,
+                        "end": 184
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 163,
+                    "end": 184
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "target",
+                      "span": {
+                        "start": 185,
+                        "end": 191
+                      }
+                    },
+                    "span": {
+                      "start": 185,
+                      "end": 191
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 163,
+                  "end": 192
+                }
+              },
+              "span": {
+                "start": 147,
+                "end": 192
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "connections",
+                "span": {
+                  "start": 201,
+                  "end": 212
+                }
+              },
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "forensic",
+                      "span": {
+                        "start": 215,
+                        "end": 223
+                      }
+                    },
+                    {
+                      "text": "network",
+                      "span": {
+                        "start": 224,
+                        "end": 231
+                      }
+                    },
+                    {
+                      "text": "connections",
+                      "span": {
+                        "start": 232,
+                        "end": 243
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 215,
+                    "end": 243
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "target",
+                      "span": {
+                        "start": 244,
+                        "end": 250
+                      }
+                    },
+                    "span": {
+                      "start": 244,
+                      "end": 250
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 215,
+                  "end": 251
+                }
+              },
+              "span": {
+                "start": 197,
+                "end": 251
+              }
+            },
+            {
+              "kind": "let",
+              "name": {
+                "text": "indicators",
+                "span": {
+                  "start": 260,
+                  "end": 270
+                }
+              },
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "forensic",
+                      "span": {
+                        "start": 273,
+                        "end": 281
+                      }
+                    },
+                    {
+                      "text": "indicator",
+                      "span": {
+                        "start": 282,
+                        "end": 291
+                      }
+                    },
+                    {
+                      "text": "correlate",
+                      "span": {
+                        "start": 292,
+                        "end": 301
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 273,
+                    "end": 301
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "system",
+                      "span": {
+                        "start": 302,
+                        "end": 308
+                      }
+                    },
+                    "span": {
+                      "start": 302,
+                      "end": 308
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "processes",
+                      "span": {
+                        "start": 310,
+                        "end": 319
+                      }
+                    },
+                    "span": {
+                      "start": 310,
+                      "end": 319
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "connections",
+                      "span": {
+                        "start": 321,
+                        "end": 332
+                      }
+                    },
+                    "span": {
+                      "start": 321,
+                      "end": 332
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 273,
+                  "end": 333
+                }
+              },
+              "span": {
+                "start": 256,
+                "end": 333
+              }
+            },
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "forensic_result",
+                      "span": {
+                        "start": 345,
+                        "end": 360
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 345,
+                    "end": 360
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "system",
+                      "span": {
+                        "start": 361,
+                        "end": 367
+                      }
+                    },
+                    "span": {
+                      "start": 361,
+                      "end": 367
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "indicators",
+                      "span": {
+                        "start": 369,
+                        "end": 379
+                      }
+                    },
+                    "span": {
+                      "start": 369,
+                      "end": 379
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 345,
+                  "end": 380
+                }
+              },
+              "span": {
+                "start": 338,
+                "end": 380
+              }
+            }
+          ],
+          "span": {
+            "start": 92,
+            "end": 382
+          }
+        },
+        "span": {
+          "start": 40,
+          "end": 382
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "investigate",
+        "span": {
+          "start": 388,
+          "end": 399
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 403,
+        "end": 421
+      },
+      "span": {
+        "start": 384,
+        "end": 421
+      }
+    }
+  }
+}

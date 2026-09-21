@@ -1,0 +1,8 @@
+module demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    let x = 1
+    let x = 2
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

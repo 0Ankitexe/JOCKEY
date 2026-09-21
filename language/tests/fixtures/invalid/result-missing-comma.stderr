@@ -1,0 +1,5 @@
+error[malformed-type]: malformed type
+  --> language/tests/fixtures/invalid/result-missing-comma.jky:3:17
+   |
+3 | fn inspect() -> result<report failure> {
+   |                 ^^^^^^^^^^^^^^^^^^^^^^ expected a type

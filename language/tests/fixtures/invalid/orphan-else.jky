@@ -1,0 +1,7 @@
+module orphan_else
+target windows
+fn inspect() -> report {
+    else {
+        return report()
+    }
+}

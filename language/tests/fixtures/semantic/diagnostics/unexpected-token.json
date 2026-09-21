@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "unexpected-token.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "unexpected-token",
+      "message": "unexpected token",
+      "location": {
+        "span": {
+          "start": 84,
+          "end": 85
+        },
+        "start": {
+          "line": 4,
+          "column": 5
+        },
+        "end": {
+          "line": 4,
+          "column": 6
+        },
+        "snippet": "    while items {",
+        "marker_start": 4,
+        "marker_width": 1
+      },
+      "label": "expected a complete program"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

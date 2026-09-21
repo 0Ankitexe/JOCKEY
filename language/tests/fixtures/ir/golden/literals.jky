@@ -1,0 +1,13 @@
+module literals
+target windows | ubuntu
+fn examples() -> string {
+    let flag = true
+    let count = 0
+    let pause = 184467440737095516160000ms
+    return "λ\tworld\n"
+}
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

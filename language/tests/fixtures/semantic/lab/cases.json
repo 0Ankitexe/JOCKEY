@@ -1,0 +1,62 @@
+[
+  {
+    "file": "lab-without-profile.jky",
+    "registry": "synthetic-lab",
+    "code": "lab-profile-required",
+    "span": {
+      "start": 91,
+      "end": 111
+    },
+    "entry_lab": true
+  },
+  {
+    "file": "indirect.jky",
+    "registry": "synthetic-lab",
+    "code": "lab-profile-required",
+    "span": {
+      "start": 88,
+      "end": 108
+    },
+    "entry_lab": true
+  },
+  {
+    "file": "dead.jky",
+    "registry": "synthetic-lab",
+    "code": "lab-profile-required",
+    "span": {
+      "start": 115,
+      "end": 135
+    },
+    "entry_lab": true
+  },
+  {
+    "file": "uncalled.jky",
+    "registry": "synthetic-lab",
+    "code": "lab-profile-required",
+    "span": {
+      "start": 88,
+      "end": 108
+    },
+    "entry_lab": false
+  },
+  {
+    "file": "comment-no-opt-in.jky",
+    "registry": "synthetic-lab",
+    "code": "lab-profile-required",
+    "span": {
+      "start": 124,
+      "end": 144
+    },
+    "entry_lab": true
+  },
+  {
+    "file": "string-no-opt-in.jky",
+    "registry": "synthetic-lab",
+    "code": "lab-profile-required",
+    "span": {
+      "start": 120,
+      "end": 140
+    },
+    "entry_lab": true
+  }
+]

@@ -1,0 +1,11 @@
+module empty_body
+target windows | ubuntu
+fn scan(items: list<int>) -> int {
+    for item in items { }
+    return 0
+}
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

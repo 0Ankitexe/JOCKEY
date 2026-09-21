@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 192
+    },
+    "module": {
+      "name": {
+        "text": "apparent_target",
+        "span": {
+          "start": 7,
+          "end": 22
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 22
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 30,
+            "end": 37
+          }
+        }
+      ],
+      "span": {
+        "start": 23,
+        "end": 37
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "ubuntu_named_operation",
+          "span": {
+            "start": 41,
+            "end": 63
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "target",
+              "span": {
+                "start": 64,
+                "end": 70
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "endpoint",
+                "span": {
+                  "start": 72,
+                  "end": 80
+                }
+              },
+              "span": {
+                "start": 72,
+                "end": 80
+              }
+            },
+            "span": {
+              "start": 64,
+              "end": 80
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 85,
+              "end": 91
+            }
+          },
+          "span": {
+            "start": 85,
+            "end": 91
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "ubuntu_adapter",
+                      "span": {
+                        "start": 105,
+                        "end": 119
+                      }
+                    },
+                    {
+                      "text": "only",
+                      "span": {
+                        "start": 120,
+                        "end": 124
+                      }
+                    },
+                    {
+                      "text": "collect",
+                      "span": {
+                        "start": 125,
+                        "end": 132
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 105,
+                    "end": 132
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "target",
+                      "span": {
+                        "start": 133,
+                        "end": 139
+                      }
+                    },
+                    "span": {
+                      "start": 133,
+                      "end": 139
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 105,
+                  "end": 140
+                }
+              },
+              "span": {
+                "start": 98,
+                "end": 140
+              }
+            }
+          ],
+          "span": {
+            "start": 92,
+            "end": 142
+          }
+        },
+        "span": {
+          "start": 38,
+          "end": 142
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "ubuntu_named_operation",
+        "span": {
+          "start": 147,
+          "end": 169
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 173,
+        "end": 191
+      },
+      "span": {
+        "start": 143,
+        "end": 191
+      }
+    }
+  }
+}

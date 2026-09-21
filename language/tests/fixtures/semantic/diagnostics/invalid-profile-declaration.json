@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "invalid-profile-declaration.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "invalid-profile-declaration",
+      "message": "profile must be declared once as profile lab after target",
+      "location": {
+        "span": {
+          "start": 40,
+          "end": 56
+        },
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 17
+        },
+        "snippet": "profile standard",
+        "marker_start": 0,
+        "marker_width": 16
+      },
+      "label": "invalid lab profile declaration"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

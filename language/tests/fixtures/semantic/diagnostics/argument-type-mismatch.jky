@@ -1,0 +1,8 @@
+module demo
+target windows | ubuntu
+fn take(x: int) -> int { return x }
+fn main(target: endpoint) -> forensic_result {
+    take("wrong")
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

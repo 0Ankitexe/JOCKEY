@@ -1,0 +1,15 @@
+module platforms
+target windows | ubuntu
+
+fn events(target: endpoint, since: timestamp, until: timestamp) -> list<event_record> {
+    if true {
+        return forensic.event.windows_log(target, "System", since, until, 10)
+    } else {
+        return forensic.event.ubuntu_journal(target, since, until, 10)
+    }
+}
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

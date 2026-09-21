@@ -1,0 +1,18 @@
+module control_flow
+target windows | ubuntu
+fn inspect(target: endpoint) -> forensic_result {
+    let enabled = true
+    if enabled {
+        for process in forensic.process.list(target) {
+            keep(process)
+            forensic.system.profile(target)
+        }
+    } else {
+        forensic.system.profile(target)
+    }
+    return forensic.system.profile(target)
+}
+fn keep(process: process_record) -> process_record {
+    return process
+}
+run inspect on selected_endpoints

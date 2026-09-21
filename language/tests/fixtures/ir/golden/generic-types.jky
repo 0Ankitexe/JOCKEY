@@ -1,0 +1,9 @@
+module generic
+target windows | ubuntu
+fn transport(x: result<option<list<bytes>>, diagnostic_error>) -> result<option<list<bytes>>, diagnostic_error> { return x }
+fn records(a: timestamp, b: platform, c: ip_address, d: path, e: process_record, f: connection_record, g: file_record, h: event_record, i: persistence_record, j: driver_record) -> timestamp { return a }
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

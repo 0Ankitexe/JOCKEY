@@ -1,0 +1,488 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "language/tests/fixtures/ir/golden/nested-arguments.jky",
+    "byte_length": 299,
+    "sha256": "10be95b283b1c66312d1881e48f00d5ff58c78ac022035d686f680b2fb7e930a"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "arguments",
+    "span": {
+      "start": 0,
+      "end": 16
+    }
+  },
+  "targets": [
+    "windows",
+    "ubuntu"
+  ],
+  "profile": null,
+  "entry": 3,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [
+      "system"
+    ],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [
+      "forensic.system.profile"
+    ],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [
+    {
+      "module": "forensic.system",
+      "name": "profile",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        }
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "required_privilege": "user",
+      "capability": "system",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    }
+  ],
+  "constants": [
+    {
+      "kind": "int",
+      "value": "1"
+    },
+    {
+      "kind": "int",
+      "value": "2"
+    }
+  ],
+  "functions": [
+    {
+      "name": "first",
+      "span": {
+        "start": 41,
+        "end": 71
+      },
+      "parameters": [],
+      "result": {
+        "kind": "named",
+        "name": "int"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 68,
+            "end": 69
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "3b774959-b0fa-8607-b094-cbfd089f091b",
+              "span": {
+                "start": 68,
+                "end": 69
+              },
+              "op": "const",
+              "destination": 0,
+              "constant": 0
+            },
+            {
+              "id": "bcef3c45-f2f0-830c-8453-e7b258183dd0",
+              "span": {
+                "start": 61,
+                "end": 69
+              },
+              "op": "return",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "second",
+      "span": {
+        "start": 72,
+        "end": 103
+      },
+      "parameters": [],
+      "result": {
+        "kind": "named",
+        "name": "int"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 100,
+            "end": 101
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "ae831326-30df-8a7f-b210-08e886eeafda",
+              "span": {
+                "start": 100,
+                "end": 101
+              },
+              "op": "const",
+              "destination": 0,
+              "constant": 1
+            },
+            {
+              "id": "707cbe0c-0470-8e94-bea4-de53984da940",
+              "span": {
+                "start": 93,
+                "end": 101
+              },
+              "op": "return",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "pair",
+      "span": {
+        "start": 104,
+        "end": 147
+      },
+      "parameters": [
+        0,
+        1
+      ],
+      "result": {
+        "kind": "named",
+        "name": "int"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "a",
+          "span": {
+            "start": 112,
+            "end": 113
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "b",
+          "span": {
+            "start": 120,
+            "end": 121
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "1844e307-d6a7-84fd-9c84-bdce9a04e1c6",
+              "span": {
+                "start": 137,
+                "end": 145
+              },
+              "op": "return",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "main",
+      "span": {
+        "start": 148,
+        "end": 267
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 156,
+            "end": 162
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 204,
+            "end": 211
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 213,
+            "end": 221
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 199,
+            "end": 222
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 234,
+            "end": 265
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "4fd00234-7fff-85a9-afe3-eb1b0f8c65c1",
+              "span": {
+                "start": 204,
+                "end": 211
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "source",
+                "function": 0
+              },
+              "arguments": [],
+              "on_error": "propagate"
+            },
+            {
+              "id": "93514c0c-1f19-8aaf-96bf-da9c6bbe272e",
+              "span": {
+                "start": 213,
+                "end": 221
+              },
+              "op": "call",
+              "destination": 2,
+              "callee": {
+                "kind": "source",
+                "function": 1
+              },
+              "arguments": [],
+              "on_error": "propagate"
+            },
+            {
+              "id": "f8f6cf19-b367-8193-bd83-5e6953fa8eff",
+              "span": {
+                "start": 199,
+                "end": 222
+              },
+              "op": "call",
+              "destination": 3,
+              "callee": {
+                "kind": "source",
+                "function": 2
+              },
+              "arguments": [
+                1,
+                2
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "b62efd87-f110-8e8a-9b5b-38b68ae0c8b8",
+              "span": {
+                "start": 234,
+                "end": 265
+              },
+              "op": "call",
+              "destination": 4,
+              "callee": {
+                "kind": "contract",
+                "contract": 0
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "6ef61854-9559-84ec-a608-a0918b755f0b",
+              "span": {
+                "start": 227,
+                "end": 265
+              },
+              "op": "return",
+              "value": 4
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [
+          "system"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.system.profile"
+        ],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

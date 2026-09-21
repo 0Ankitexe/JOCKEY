@@ -1,0 +1,4 @@
+module missing_brace
+target ubuntu
+fn inspect() -> report {
+    return report()

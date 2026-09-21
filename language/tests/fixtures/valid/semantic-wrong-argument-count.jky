@@ -1,0 +1,9 @@
+module argument_count
+target windows
+fn accepts_one(value: item) -> report {
+    return report(value)
+}
+fn invoke() -> report {
+    return accepts_one()
+}
+run invoke on selected_endpoints

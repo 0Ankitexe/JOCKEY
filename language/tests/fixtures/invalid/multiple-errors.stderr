@@ -1,0 +1,23 @@
+error[invalid-target-declaration]: target must be windows, ubuntu, or windows | ubuntu
+  --> language/tests/fixtures/invalid/multiple-errors.jky:2:8
+   |
+2 | target macos
+   |        ^^^^^ unsupported target
+
+error[malformed-type]: malformed type
+  --> language/tests/fixtures/invalid/multiple-errors.jky:3:17
+   |
+3 | fn first(value: list<>) -> report {
+   |                 ^^^^^^ expected a type
+
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/multiple-errors.jky:4:5
+   |
+4 |     return
+   |     ^^^^^^ expected an expression
+
+error[duplicate-top-level-run]: duplicate top-level run statement
+  --> language/tests/fixtures/invalid/multiple-errors.jky:7:1
+   |
+7 | run first on selected_endpoints
+   | ^^^ additional run statement

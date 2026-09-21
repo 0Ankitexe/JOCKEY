@@ -1,0 +1,218 @@
+[
+  {
+    "file": "duplicate-function.jky",
+    "code": "duplicate-definition",
+    "span": {
+      "start": 127,
+      "end": 131
+    }
+  },
+  {
+    "file": "duplicate-parameter.jky",
+    "code": "duplicate-definition",
+    "span": {
+      "start": 54,
+      "end": 55
+    }
+  },
+  {
+    "file": "duplicate-local.jky",
+    "code": "duplicate-definition",
+    "span": {
+      "start": 105,
+      "end": 106
+    }
+  },
+  {
+    "file": "parameter-redeclared.jky",
+    "code": "duplicate-definition",
+    "span": {
+      "start": 91,
+      "end": 97
+    }
+  },
+  {
+    "file": "reserved-helper.jky",
+    "code": "duplicate-definition",
+    "span": {
+      "start": 39,
+      "end": 54
+    }
+  },
+  {
+    "file": "unknown-type.jky",
+    "code": "unknown-type",
+    "span": {
+      "start": 49,
+      "end": 56
+    }
+  },
+  {
+    "file": "unknown-local.jky",
+    "code": "unknown-name",
+    "span": {
+      "start": 95,
+      "end": 102
+    }
+  },
+  {
+    "file": "self-initializer.jky",
+    "code": "unknown-name",
+    "span": {
+      "start": 102,
+      "end": 110
+    }
+  },
+  {
+    "file": "escaped-binding.jky",
+    "code": "unknown-name",
+    "span": {
+      "start": 126,
+      "end": 132
+    }
+  },
+  {
+    "file": "unknown-function.jky",
+    "code": "unknown-name",
+    "span": {
+      "start": 87,
+      "end": 94
+    }
+  },
+  {
+    "file": "unknown-module-call.jky",
+    "code": "unknown-name",
+    "span": {
+      "start": 87,
+      "end": 107
+    }
+  },
+  {
+    "file": "non-callable-local.jky",
+    "code": "not-callable",
+    "span": {
+      "start": 101,
+      "end": 102
+    }
+  },
+  {
+    "file": "too-few-arguments.jky",
+    "code": "argument-count-mismatch",
+    "span": {
+      "start": 87,
+      "end": 110
+    }
+  },
+  {
+    "file": "too-many-arguments.jky",
+    "code": "argument-count-mismatch",
+    "span": {
+      "start": 87,
+      "end": 110
+    }
+  },
+  {
+    "file": "wrong-primitive-argument.jky",
+    "code": "argument-type-mismatch",
+    "span": {
+      "start": 128,
+      "end": 135
+    }
+  },
+  {
+    "file": "nested-generic-mismatch.jky",
+    "code": "argument-type-mismatch",
+    "span": {
+      "start": 141,
+      "end": 142
+    }
+  },
+  {
+    "file": "string-is-not-path.jky",
+    "code": "argument-type-mismatch",
+    "span": {
+      "start": 117,
+      "end": 123
+    }
+  },
+  {
+    "file": "wrong-return.jky",
+    "code": "return-type-mismatch",
+    "span": {
+      "start": 64,
+      "end": 69
+    }
+  },
+  {
+    "file": "missing-return-branch.jky",
+    "code": "missing-return",
+    "span": {
+      "start": 88,
+      "end": 89
+    }
+  },
+  {
+    "file": "loop-only-return.jky",
+    "code": "missing-return",
+    "span": {
+      "start": 95,
+      "end": 96
+    }
+  },
+  {
+    "file": "non-bool-condition.jky",
+    "code": "condition-not-bool",
+    "span": {
+      "start": 90,
+      "end": 91
+    }
+  },
+  {
+    "file": "non-list-loop.jky",
+    "code": "not-a-collection",
+    "span": {
+      "start": 96,
+      "end": 102
+    }
+  },
+  {
+    "file": "missing-run.jky",
+    "code": "missing-run",
+    "span": {
+      "start": 128,
+      "end": 128
+    }
+  },
+  {
+    "file": "unknown-run.jky",
+    "code": "invalid-entry-point",
+    "span": {
+      "start": 132,
+      "end": 138
+    }
+  },
+  {
+    "file": "run-arity.jky",
+    "code": "invalid-entry-point",
+    "span": {
+      "start": 204,
+      "end": 207
+    }
+  },
+  {
+    "file": "run-list-endpoint.jky",
+    "code": "invalid-entry-point",
+    "span": {
+      "start": 244,
+      "end": 247
+    }
+  },
+  {
+    "file": "run-wrong-result.jky",
+    "code": "invalid-entry-point",
+    "span": {
+      "start": 177,
+      "end": 180
+    }
+  }
+]

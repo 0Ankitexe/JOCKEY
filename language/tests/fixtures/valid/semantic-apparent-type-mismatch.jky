@@ -1,0 +1,7 @@
+module apparent_types
+target ubuntu
+fn investigate(target: endpoint) -> report {
+    let count = "not an integer"
+    return report(count, target)
+}
+run investigate on selected_endpoints

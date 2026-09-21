@@ -1,0 +1,3 @@
+error[IR_REFERENCE]: invalid reference, ownership or source span
+  --> ir/tests/fixtures/invalid/verifier/span-outside-source.ir.json
+  IR pointer: /module/span

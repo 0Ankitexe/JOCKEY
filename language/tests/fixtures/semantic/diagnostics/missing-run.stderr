@@ -1,0 +1,5 @@
+error[missing-run]: program requires one top-level run statement
+  --> missing-run.jky:6:1
+   |
+6 | 
+   | ^ run statement required

@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/unsupported-while.jky:4:5
+   |
+4 |     while items {
+   |     ^ expected a complete program

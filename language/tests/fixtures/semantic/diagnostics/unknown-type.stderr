@@ -1,0 +1,5 @@
+error[unknown-type]: unknown type: mystery
+  --> unknown-type.jky:3:14
+   |
+3 | fn helper(x: mystery) -> int { return 1 }
+   |              ^^^^^^^ type is not defined

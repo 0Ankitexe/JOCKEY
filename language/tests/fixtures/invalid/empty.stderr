@@ -1,0 +1,5 @@
+error[unexpected-token]: incomplete program
+  --> language/tests/fixtures/invalid/empty.jky:1:1
+   |
+1 | 
+   | ^ expected a complete program

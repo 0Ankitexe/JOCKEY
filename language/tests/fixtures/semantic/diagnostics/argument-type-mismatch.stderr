@@ -1,0 +1,5 @@
+error[argument-type-mismatch]: argument type mismatch: expected int, found string
+  --> argument-type-mismatch.jky:5:10
+   |
+5 |     take("wrong")
+   |          ^^^^^^^ argument type mismatch

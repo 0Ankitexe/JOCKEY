@@ -1,0 +1,7 @@
+module multiple_errors
+target macos
+fn first(value: list<>) -> report {
+    return
+}
+run first on selected_endpoints
+run first on selected_endpoints

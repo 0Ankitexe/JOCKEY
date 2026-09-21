@@ -1,0 +1,15 @@
+module windows_events
+target windows
+
+// This uncalled helper demonstrates a Windows-only contract.
+// Timestamps are opaque parameters, not invented runtime values.
+fn events(target: endpoint, since: timestamp, until: timestamp) -> list<event_record> {
+    return forensic.event.windows_log(target, "System", since, until, 100)
+}
+
+// The run entry does not call events, so its metadata is system/user/both.
+fn investigate(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+
+run investigate on selected_endpoints

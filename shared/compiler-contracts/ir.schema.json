@@ -1,0 +1,599 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/compiler/ir/v1/ir.schema.json",
+  "title": "JOCKY IR 1.0.0",
+  "description": "Structural contract; full independent verification is additionally required.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_version",
+    "build_seed",
+    "source",
+    "registry",
+    "module",
+    "targets",
+    "profile",
+    "entry",
+    "entry_metadata",
+    "contracts",
+    "constants",
+    "functions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "language_version": {
+      "const": "2.0.0"
+    },
+    "build_seed": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20,
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "not": {
+        "pattern": "[^0-9]"
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "byte_length", "sha256"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "byte_length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4194304
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "registry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "fingerprint"],
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "fingerprint": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "span"],
+      "properties": {
+        "name": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/identifier"
+        },
+        "span": {
+          "anyOf": [
+            {
+              "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "targets": {
+      "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platforms"
+    },
+    "profile": {
+      "anyOf": [
+        {
+          "const": "lab"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "entry": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1023
+    },
+    "entry_metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "contracts": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 512,
+      "items": {
+        "$ref": "https://jocky.dev/compiler/v1/module-registry.schema.json#/$defs/function"
+      }
+    },
+    "constants": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 100000,
+      "items": {
+        "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value"
+      }
+    },
+    "functions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1024,
+      "items": {
+        "$ref": "#/$defs/function"
+      }
+    }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_privilege",
+        "capabilities",
+        "supported_platforms",
+        "unavailable_dependencies",
+        "read_only",
+        "lab_only"
+      ],
+      "properties": {
+        "required_privilege": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/privilege"
+        },
+        "capabilities": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/capabilities"
+        },
+        "supported_platforms": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platforms"
+        },
+        "unavailable_dependencies": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 513,
+          "items": {
+            "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/qualifiedName"
+          },
+          "uniqueItems": true
+        },
+        "read_only": {
+          "type": "boolean"
+        },
+        "lab_only": {
+          "type": "boolean"
+        }
+      }
+    },
+    "instruction": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "span", "op", "destination", "constant"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "span": {
+              "anyOf": [
+                {
+                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "op": {
+              "const": "const"
+            },
+            "destination": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "constant": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "span", "op", "destination", "source"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "span": {
+              "anyOf": [
+                {
+                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "op": {
+              "const": "copy"
+            },
+            "destination": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "source": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "span",
+            "op",
+            "destination",
+            "callee",
+            "arguments",
+            "on_error"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "span": {
+              "anyOf": [
+                {
+                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "op": {
+              "const": "call"
+            },
+            "destination": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "callee": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind", "function"],
+                  "properties": {
+                    "kind": {
+                      "const": "source"
+                    },
+                    "function": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1023
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind", "contract"],
+                  "properties": {
+                    "kind": {
+                      "const": "contract"
+                    },
+                    "contract": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 511
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind"],
+                  "properties": {
+                    "kind": {
+                      "const": "composition"
+                    }
+                  }
+                }
+              ]
+            },
+            "arguments": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 100000,
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 99999
+              }
+            },
+            "on_error": {
+              "const": "propagate"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "span",
+            "op",
+            "condition",
+            "then_region",
+            "else_region"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "span": {
+              "anyOf": [
+                {
+                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "op": {
+              "const": "if"
+            },
+            "condition": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "then_region": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "else_region": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 99999
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "span", "op", "collection", "item", "body_region"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "span": {
+              "anyOf": [
+                {
+                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "op": {
+              "const": "for_each"
+            },
+            "collection": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "item": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            },
+            "body_region": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "span", "op", "value"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36,
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "span": {
+              "anyOf": [
+                {
+                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "op": {
+              "const": "return"
+            },
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 99999
+            }
+          }
+        }
+      ]
+    },
+    "function": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "span",
+        "parameters",
+        "result",
+        "slots",
+        "root_region",
+        "regions",
+        "metadata"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/identifier"
+        },
+        "span": {
+          "anyOf": [
+            {
+              "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parameters": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 100000,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 99999
+          }
+        },
+        "result": {
+          "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/type"
+        },
+        "slots": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 100000,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "region", "kind", "name", "span"],
+            "properties": {
+              "type": {
+                "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/type"
+              },
+              "region": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 99999
+              },
+              "kind": {
+                "enum": ["parameter", "local", "temporary", "loop_binding"]
+              },
+              "name": {
+                "anyOf": [
+                  {
+                    "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/identifier"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "span": {
+                "anyOf": [
+                  {
+                    "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "root_region": {
+          "const": 0
+        },
+        "regions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100000,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["instructions"],
+            "properties": {
+              "instructions": {
+                "type": "array",
+                "minItems": 0,
+                "maxItems": 100000,
+                "items": {
+                  "$ref": "#/$defs/instruction"
+                }
+              }
+            }
+          }
+        },
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+error[invalid-target-declaration]: target must be windows, ubuntu, or windows | ubuntu
+  --> invalid-target-declaration.jky:2:8
+   |
+2 | target macos
+   |        ^^^^^ unsupported target

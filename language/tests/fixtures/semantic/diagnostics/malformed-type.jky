@@ -1,0 +1,5 @@
+module list_missing
+target windows
+fn inspect(items: list<>) -> report {
+    return report(items)
+}

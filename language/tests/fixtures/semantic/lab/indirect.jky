@@ -1,0 +1,11 @@
+module lab_demo
+target windows | ubuntu
+fn helper() -> list<driver_record> {
+    return forensic.lab.inspect()
+}
+
+fn main(target: endpoint) -> forensic_result {
+    helper()
+    return main(target)
+}
+run main on selected_endpoints

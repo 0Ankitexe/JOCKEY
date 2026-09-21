@@ -1,0 +1,102 @@
+[
+  {
+    "name": "triage",
+    "source": "examples/triage.jky",
+    "golden": "triage.ir.json"
+  },
+  {
+    "name": "minimal",
+    "source": "examples/minimal.jky",
+    "golden": "minimal.ir.json"
+  },
+  {
+    "name": "comments",
+    "source": "examples/comments.jky",
+    "golden": "comments.ir.json"
+  },
+  {
+    "name": "control-flow",
+    "source": "examples/control-flow.jky",
+    "golden": "control-flow.ir.json"
+  },
+  {
+    "name": "types-and-literals",
+    "source": "examples/types-and-literals.jky",
+    "golden": "types-and-literals.ir.json"
+  },
+  {
+    "name": "cross-platform",
+    "source": "examples/cross-platform.jky",
+    "golden": "cross-platform.ir.json"
+  },
+  {
+    "name": "windows-events",
+    "source": "examples/windows-events.jky",
+    "golden": "windows-events.ir.json"
+  },
+  {
+    "name": "ubuntu-events",
+    "source": "examples/ubuntu-events.jky",
+    "golden": "ubuntu-events.ir.json"
+  },
+  {
+    "name": "literals",
+    "source": "language/tests/fixtures/ir/golden/literals.jky",
+    "golden": "literals.ir.json"
+  },
+  {
+    "name": "nested-arguments",
+    "source": "language/tests/fixtures/ir/golden/nested-arguments.jky",
+    "golden": "nested-arguments.ir.json"
+  },
+  {
+    "name": "shadowing",
+    "source": "language/tests/fixtures/ir/golden/shadowing.jky",
+    "golden": "shadowing.ir.json"
+  },
+  {
+    "name": "branches",
+    "source": "language/tests/fixtures/ir/golden/branches.jky",
+    "golden": "branches.ir.json"
+  },
+  {
+    "name": "empty-body-loop",
+    "source": "language/tests/fixtures/ir/golden/empty-body-loop.jky",
+    "golden": "empty-body-loop.ir.json"
+  },
+  {
+    "name": "nonempty-body-loop",
+    "source": "language/tests/fixtures/ir/golden/nonempty-body-loop.jky",
+    "golden": "nonempty-body-loop.ir.json"
+  },
+  {
+    "name": "nested-loops",
+    "source": "language/tests/fixtures/ir/golden/nested-loops.jky",
+    "golden": "nested-loops.ir.json"
+  },
+  {
+    "name": "early-return",
+    "source": "language/tests/fixtures/ir/golden/early-return.jky",
+    "golden": "early-return.ir.json"
+  },
+  {
+    "name": "recursion",
+    "source": "language/tests/fixtures/ir/golden/recursion.jky",
+    "golden": "recursion.ir.json"
+  },
+  {
+    "name": "large-values",
+    "source": "language/tests/fixtures/ir/golden/large-values.jky",
+    "golden": "large-values.ir.json"
+  },
+  {
+    "name": "generic-types",
+    "source": "language/tests/fixtures/ir/golden/generic-types.jky",
+    "golden": "generic-types.ir.json"
+  },
+  {
+    "name": "lab-profile",
+    "source": "language/tests/fixtures/ir/golden/lab-profile.jky",
+    "golden": "lab-profile.ir.json"
+  }
+]

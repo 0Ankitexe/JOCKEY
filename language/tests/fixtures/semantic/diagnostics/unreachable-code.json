@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "status": "valid",
+  "file": "unreachable-code.jky",
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "unreachable-code",
+      "message": "statement is unreachable",
+      "location": {
+        "span": {
+          "start": 120,
+          "end": 134
+        },
+        "start": {
+          "line": 5,
+          "column": 5
+        },
+        "end": {
+          "line": 5,
+          "column": 19
+        },
+        "snippet": "    let unused = 1",
+        "marker_start": 4,
+        "marker_width": 14
+      },
+      "label": "unreachable statement"
+    },
+    {
+      "severity": "warning",
+      "code": "unused-binding",
+      "message": "local binding is never used: unused",
+      "location": {
+        "span": {
+          "start": 124,
+          "end": 130
+        },
+        "start": {
+          "line": 5,
+          "column": 9
+        },
+        "end": {
+          "line": 5,
+          "column": 15
+        },
+        "snippet": "    let unused = 1",
+        "marker_start": 8,
+        "marker_width": 6
+      },
+      "label": "unused binding"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": {
+    "module": "demo",
+    "selected_targets": [
+      "ubuntu"
+    ],
+    "profile": "standard",
+    "entry": {
+      "name": "demo.main",
+      "required_privilege": "user",
+      "capabilities": [
+        "system"
+      ],
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "unavailable_dependencies": [
+        "forensic.system.profile"
+      ]
+    },
+    "functions": [
+      {
+        "name": "demo.main",
+        "required_privilege": "user",
+        "capabilities": [
+          "system"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.system.profile"
+        ]
+      }
+    ]
+  }
+}

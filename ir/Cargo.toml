@@ -1,0 +1,18 @@
+[package]
+name = "jocky-ir"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+jsonschema.workspace = true
+jocky-shared = { path = "../shared" }
+jocky-forensic = { path = "../forensic-lib" }
+sha2 = { version = "=0.10.9", default-features = false, features = ["std", "force-soft"] }

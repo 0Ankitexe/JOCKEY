@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 188
+    },
+    "module": {
+      "name": {
+        "text": "argument_count",
+        "span": {
+          "start": 7,
+          "end": 21
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 21
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 29,
+            "end": 36
+          }
+        }
+      ],
+      "span": {
+        "start": 22,
+        "end": 36
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "accepts_one",
+          "span": {
+            "start": 40,
+            "end": 51
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "value",
+              "span": {
+                "start": 52,
+                "end": 57
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "item",
+                "span": {
+                  "start": 59,
+                  "end": 63
+                }
+              },
+              "span": {
+                "start": 59,
+                "end": 63
+              }
+            },
+            "span": {
+              "start": 52,
+              "end": 63
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 68,
+              "end": 74
+            }
+          },
+          "span": {
+            "start": 68,
+            "end": 74
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 88,
+                        "end": 94
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 88,
+                    "end": 94
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "value",
+                      "span": {
+                        "start": 95,
+                        "end": 100
+                      }
+                    },
+                    "span": {
+                      "start": 95,
+                      "end": 100
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 88,
+                  "end": 101
+                }
+              },
+              "span": {
+                "start": 81,
+                "end": 101
+              }
+            }
+          ],
+          "span": {
+            "start": 75,
+            "end": 103
+          }
+        },
+        "span": {
+          "start": 37,
+          "end": 103
+        }
+      },
+      {
+        "name": {
+          "text": "invoke",
+          "span": {
+            "start": 107,
+            "end": 113
+          }
+        },
+        "parameters": [],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 119,
+              "end": 125
+            }
+          },
+          "span": {
+            "start": 119,
+            "end": 125
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "accepts_one",
+                      "span": {
+                        "start": 139,
+                        "end": 150
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 139,
+                    "end": 150
+                  }
+                },
+                "arguments": [],
+                "span": {
+                  "start": 139,
+                  "end": 152
+                }
+              },
+              "span": {
+                "start": 132,
+                "end": 152
+              }
+            }
+          ],
+          "span": {
+            "start": 126,
+            "end": 154
+          }
+        },
+        "span": {
+          "start": 104,
+          "end": 154
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "invoke",
+        "span": {
+          "start": 159,
+          "end": 165
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 169,
+        "end": 187
+      },
+      "span": {
+        "start": 155,
+        "end": 187
+      }
+    }
+  }
+}

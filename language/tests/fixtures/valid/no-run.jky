@@ -1,0 +1,5 @@
+module library_only
+target ubuntu
+fn helper(value: item) -> option<item> {
+    return wrap(value)
+}

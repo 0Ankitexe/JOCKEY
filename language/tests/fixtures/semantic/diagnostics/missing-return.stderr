@@ -1,0 +1,5 @@
+error[missing-return]: function may finish without returning int
+  --> missing-return.jky:3:53
+   |
+3 | fn helper(flag: bool) -> int { if flag { return 1 } }
+   |                                                     ^ return value required

@@ -1,0 +1,8 @@
+module missing_collection
+target ubuntu
+fn inspect(items: list<item>) -> report {
+    for item in {
+        inspect(item)
+    }
+    return report()
+}

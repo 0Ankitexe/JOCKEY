@@ -1,0 +1,5 @@
+error[IR_TYPE]: incompatible exact IR types
+  --> ir/tests/fixtures/invalid/verifier/argument-count.ir.json
+  IR pointer: /functions/0/regions/0/instructions/0
+  instruction: 67b98737-81aa-8f41-a923-ca8f1fc17825
+  source bytes: 111..142

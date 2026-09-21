@@ -1,0 +1,394 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "language/tests/fixtures/ir/golden/nested-loops.jky",
+    "byte_length": 325,
+    "sha256": "f341e44f84681e4d679be6ce498bd23d4a7b907676eb6e592df6ec7534ef8b40"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "nested_loops",
+    "span": {
+      "start": 0,
+      "end": 19
+    }
+  },
+  "targets": [
+    "windows",
+    "ubuntu"
+  ],
+  "profile": null,
+  "entry": 1,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [
+      "system"
+    ],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [
+      "forensic.system.profile"
+    ],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [
+    {
+      "module": "forensic.system",
+      "name": "profile",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        }
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "required_privilege": "user",
+      "capability": "system",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    }
+  ],
+  "constants": [
+    {
+      "kind": "bool",
+      "value": true
+    },
+    {
+      "kind": "int",
+      "value": "0"
+    }
+  ],
+  "functions": [
+    {
+      "name": "scan",
+      "span": {
+        "start": 44,
+        "end": 200
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "int"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "list",
+              "element": {
+                "kind": "named",
+                "name": "int"
+              }
+            }
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "items",
+          "span": {
+            "start": 52,
+            "end": 57
+          }
+        },
+        {
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "named",
+              "name": "int"
+            }
+          },
+          "region": 1,
+          "kind": "loop_binding",
+          "name": "row",
+          "span": {
+            "start": 93,
+            "end": 96
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 2,
+          "kind": "loop_binding",
+          "name": "item",
+          "span": {
+            "start": 120,
+            "end": 124
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "bool"
+          },
+          "region": 2,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 149,
+            "end": 153
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 197,
+            "end": 198
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "64099be4-ff59-83c0-acd9-2c9bc981dd4a",
+              "span": {
+                "start": 89,
+                "end": 185
+              },
+              "op": "for_each",
+              "collection": 0,
+              "item": 1,
+              "body_region": 1
+            },
+            {
+              "id": "4da854f6-dd9b-803b-b17d-f456011b87d4",
+              "span": {
+                "start": 197,
+                "end": 198
+              },
+              "op": "const",
+              "destination": 4,
+              "constant": 1
+            },
+            {
+              "id": "0f8467cd-ade0-83bb-a374-4bea351b61d0",
+              "span": {
+                "start": 190,
+                "end": 198
+              },
+              "op": "return",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "instructions": [
+            {
+              "id": "2b6a5000-466c-8294-9e3a-0055c58e5026",
+              "span": {
+                "start": 116,
+                "end": 179
+              },
+              "op": "for_each",
+              "collection": 1,
+              "item": 2,
+              "body_region": 2
+            }
+          ]
+        },
+        {
+          "instructions": [
+            {
+              "id": "2762dc8c-d5a5-8749-8278-4c4343ef6c78",
+              "span": {
+                "start": 149,
+                "end": 153
+              },
+              "op": "const",
+              "destination": 3,
+              "constant": 0
+            },
+            {
+              "id": "69799be6-1665-82e5-a94c-ec6fe574e188",
+              "span": {
+                "start": 146,
+                "end": 169
+              },
+              "op": "if",
+              "condition": 3,
+              "then_region": 3,
+              "else_region": null
+            }
+          ]
+        },
+        {
+          "instructions": [
+            {
+              "id": "225b3779-b835-80ef-83ec-deefe8d83156",
+              "span": {
+                "start": 156,
+                "end": 167
+              },
+              "op": "return",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "main",
+      "span": {
+        "start": 202,
+        "end": 293
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 210,
+            "end": 216
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 260,
+            "end": 291
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "cce1a98e-6b94-81e7-a70a-ca4695758ad1",
+              "span": {
+                "start": 260,
+                "end": 291
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "contract",
+                "contract": 0
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "7692d997-f43c-8201-882e-7681e9aca7fc",
+              "span": {
+                "start": 253,
+                "end": 291
+              },
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [
+          "system"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.system.profile"
+        ],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

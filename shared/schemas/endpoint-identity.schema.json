@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/schemas/v1/endpoint-identity.schema.json",
+  "title": "EndpointIdentity",
+  "description": "Stable identity and platform facts for an authorised JOCKY lab endpoint.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "endpoint_id",
+    "hostname",
+    "platform",
+    "architecture",
+    "os_version",
+    "runtime_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "endpoint_id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "hostname": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 253
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["windows", "ubuntu"]
+    },
+    "architecture": {
+      "type": "string",
+      "enum": ["x86_64", "aarch64"]
+    },
+    "os_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "runtime_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    }
+  }
+}
+

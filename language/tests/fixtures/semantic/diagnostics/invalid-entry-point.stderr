@@ -1,0 +1,5 @@
+error[invalid-entry-point]: run entry must name a source function with signature (endpoint) -> forensic_result
+  --> invalid-entry-point.jky:6:5
+   |
+6 | run absent on selected_endpoints
+   |     ^^^^^^ invalid run entry point

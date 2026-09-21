@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "hostname": "ubuntu-lab-01",
+  "platform": "ubuntu",
+  "architecture": "x86_64",
+  "os_version": "24.04",
+  "runtime_version": "0.0.0"
+}
+

@@ -1,0 +1,24 @@
+module demo
+target windows | ubuntu
+fn identity0(value: bool) -> bool { return value }
+fn identity1(value: int) -> int { return value }
+fn identity2(value: string) -> string { return value }
+fn identity3(value: bytes) -> bytes { return value }
+fn identity4(value: duration) -> duration { return value }
+fn identity5(value: timestamp) -> timestamp { return value }
+fn identity6(value: endpoint) -> endpoint { return value }
+fn identity7(value: platform) -> platform { return value }
+fn identity8(value: ip_address) -> ip_address { return value }
+fn identity9(value: path) -> path { return value }
+fn identity10(value: process_record) -> process_record { return value }
+fn identity11(value: connection_record) -> connection_record { return value }
+fn identity12(value: file_record) -> file_record { return value }
+fn identity13(value: event_record) -> event_record { return value }
+fn identity14(value: persistence_record) -> persistence_record { return value }
+fn identity15(value: driver_record) -> driver_record { return value }
+fn identity16(value: forensic_result) -> forensic_result { return value }
+fn identity17(value: diagnostic_error) -> diagnostic_error { return value }
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

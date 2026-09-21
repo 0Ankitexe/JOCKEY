@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/compiler/fixture/v1/report.schema.json",
+  "title": "JOCKY fixture execution report 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "fixture_id",
+    "endpoint_id",
+    "platform",
+    "limits",
+    "accounting",
+    "outcome"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "mode": {
+      "const": "fixture"
+    },
+    "fixture_id": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "endpoint_id": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "platform": {
+      "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/platform"
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instructions", "collection", "work", "call_depth"],
+      "properties": {
+        "instructions": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "collection": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "work": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "call_depth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        }
+      }
+    },
+    "accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instructions",
+        "work",
+        "peak_call_depth",
+        "peak_storage_bytes"
+      ],
+      "properties": {
+        "instructions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "work": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000000
+        },
+        "peak_call_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        },
+        "peak_storage_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 67108864
+        }
+      }
+    },
+    "outcome": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "value"],
+          "properties": {
+            "status": {
+              "const": "success"
+            },
+            "value": {
+              "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_forensic_result"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "error"],
+          "properties": {
+            "status": {
+              "const": "failure"
+            },
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["category", "code", "function", "origin"],
+                  "properties": {
+                    "category": {
+                      "const": "provider"
+                    },
+                    "code": {
+                      "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/errorCode"
+                    },
+                    "function": {
+                      "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/qualifiedName"
+                    },
+                    "origin": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": ["instruction_id", "span"],
+                          "properties": {
+                            "instruction_id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "minLength": 36,
+                              "maxLength": 36,
+                              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+                            },
+                            "span": {
+                              "anyOf": [
+                                {
+                                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["category", "code", "origin"],
+                  "properties": {
+                    "category": {
+                      "const": "interpreter"
+                    },
+                    "code": {
+                      "enum": [
+                        "EXEC_INSTRUCTION_LIMIT",
+                        "EXEC_WORK_LIMIT",
+                        "EXEC_COLLECTION_LIMIT",
+                        "EXEC_CALL_DEPTH",
+                        "EXEC_VALUE_DEPTH",
+                        "EXEC_MEMORY_LIMIT",
+                        "EXEC_OUTPUT_LIMIT",
+                        "EXEC_INVALID_VALUE",
+                        "EXEC_INVALID_COMPOSITION"
+                      ]
+                    },
+                    "origin": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": ["instruction_id", "span"],
+                          "properties": {
+                            "instruction_id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "minLength": 36,
+                              "maxLength": 36,
+                              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+                            },
+                            "span": {
+                              "anyOf": [
+                                {
+                                  "$ref": "https://jocky.dev/compiler/v1/types.schema.json#/$defs/span"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

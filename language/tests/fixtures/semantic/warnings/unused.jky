@@ -1,0 +1,9 @@
+module demo
+target windows | ubuntu
+fn helper(parameter: int) -> int { return 1 }
+fn main(target: endpoint) -> forensic_result {
+    let _unused = 1
+    for unused_loop in forensic.process.list(target) { forensic.system.profile(target) }
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

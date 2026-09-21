@@ -1,0 +1,11 @@
+warning[unreachable-code]: statement is unreachable
+  --> unreachable-code.jky:5:5
+   |
+5 |     let unused = 1
+   |     ^^^^^^^^^^^^^^ unreachable statement
+
+warning[unused-binding]: local binding is never used: unused
+  --> unreachable-code.jky:5:9
+   |
+5 |     let unused = 1
+   |         ^^^^^^ unused binding

@@ -1,0 +1,5 @@
+module fn
+target windows
+fn inspect() -> report {
+    return report()
+}

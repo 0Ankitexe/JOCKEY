@@ -1,0 +1,182 @@
+[
+  {
+    "file": "missing-id.ir.json",
+    "code": "IR_SCHEMA",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "duplicate-id.ir.json",
+    "code": "IR_IDENTITY",
+    "pointer": "/functions/0/regions/0/instructions/1/id"
+  },
+  {
+    "file": "wrong-id.ir.json",
+    "code": "IR_IDENTITY",
+    "pointer": "/functions/0/regions/0/instructions/0/id"
+  },
+  {
+    "file": "dangling-function.ir.json",
+    "code": "IR_REFERENCE",
+    "pointer": "/functions/0/regions/0/instructions/0/callee/function"
+  },
+  {
+    "file": "dangling-slot.ir.json",
+    "code": "IR_REFERENCE",
+    "pointer": "/functions/0/regions/0/instructions/0/destination"
+  },
+  {
+    "file": "dangling-constant.ir.json",
+    "code": "IR_REFERENCE",
+    "pointer": "/functions/0/regions/0/instructions/0/constant"
+  },
+  {
+    "file": "slot-owner.ir.json",
+    "code": "IR_REFERENCE",
+    "pointer": "/functions/0/slots/1"
+  },
+  {
+    "file": "before-initialization.ir.json",
+    "code": "IR_INITIALIZATION",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "duplicate-initialization.ir.json",
+    "code": "IR_INITIALIZATION",
+    "pointer": "/functions/0/regions/0/instructions/1/destination"
+  },
+  {
+    "file": "constant-type.ir.json",
+    "code": "IR_TYPE",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "return-type.ir.json",
+    "code": "IR_RETURN",
+    "pointer": "/functions/0/regions/0/instructions/1"
+  },
+  {
+    "file": "missing-return.ir.json",
+    "code": "IR_RETURN",
+    "pointer": "/functions/0/root_region"
+  },
+  {
+    "file": "detached-region.ir.json",
+    "code": "IR_CONTROL",
+    "pointer": "/functions/0/regions"
+  },
+  {
+    "file": "root-cycle.ir.json",
+    "code": "IR_CONTROL",
+    "pointer": "/functions/0/regions/0/instructions/2"
+  },
+  {
+    "file": "entry-reference.ir.json",
+    "code": "IR_REFERENCE",
+    "pointer": "/entry"
+  },
+  {
+    "file": "entry-signature.ir.json",
+    "code": "IR_RETURN",
+    "pointer": "/entry"
+  },
+  {
+    "file": "missing-entry.ir.json",
+    "code": "IR_SCHEMA",
+    "pointer": ""
+  },
+  {
+    "file": "fingerprint.ir.json",
+    "code": "IR_CONTRACT",
+    "pointer": "/registry/fingerprint"
+  },
+  {
+    "file": "forged-summary.ir.json",
+    "code": "IR_METADATA",
+    "pointer": "/entry_metadata"
+  },
+  {
+    "file": "forged-privilege.ir.json",
+    "code": "IR_METADATA",
+    "pointer": "/functions/0/metadata"
+  },
+  {
+    "file": "unknown-opcode.ir.json",
+    "code": "IR_SCHEMA",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "unknown-type.ir.json",
+    "code": "IR_SCHEMA",
+    "pointer": "/functions/0/slots/0/type/name"
+  },
+  {
+    "file": "external-reference.ir.json",
+    "code": "IR_SCHEMA",
+    "pointer": ""
+  },
+  {
+    "file": "span-outside-source.ir.json",
+    "code": "IR_REFERENCE",
+    "pointer": "/module/span"
+  },
+  {
+    "file": "ir-version.ir.json",
+    "code": "IR_VERSION",
+    "pointer": "/schema_version"
+  },
+  {
+    "file": "language-version.ir.json",
+    "code": "IR_VERSION",
+    "pointer": "/language_version"
+  },
+  {
+    "file": "argument-count.ir.json",
+    "code": "IR_TYPE",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "argument-type.ir.json",
+    "code": "IR_TYPE",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "error-policy.ir.json",
+    "code": "IR_SCHEMA",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  },
+  {
+    "file": "contract-descriptor.ir.json",
+    "code": "IR_CONTRACT",
+    "pointer": "/contracts/0"
+  },
+  {
+    "file": "malformed.ir.json",
+    "code": "IR_JSON",
+    "pointer": ""
+  },
+  {
+    "file": "duplicate-key.ir.json",
+    "code": "IR_JSON",
+    "pointer": ""
+  },
+  {
+    "file": "trailing-json.ir.json",
+    "code": "IR_JSON",
+    "pointer": ""
+  },
+  {
+    "file": "json-depth.ir.json",
+    "code": "IR_RESOURCE",
+    "pointer": ""
+  },
+  {
+    "file": "non-bool.ir.json",
+    "code": "IR_TYPE",
+    "pointer": "/functions/0/regions/0/instructions/1"
+  },
+  {
+    "file": "non-list.ir.json",
+    "code": "IR_TYPE",
+    "pointer": "/functions/0/regions/0/instructions/0"
+  }
+]

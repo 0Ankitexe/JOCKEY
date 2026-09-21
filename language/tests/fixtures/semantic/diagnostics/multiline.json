@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "multiline.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "condition-not-bool",
+      "message": "condition must have type bool; found forensic_result",
+      "location": {
+        "span": {
+          "start": 80,
+          "end": 125
+        },
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 6,
+          "column": 6
+        },
+        "snippet": "    if forensic.system.profile(",
+        "marker_start": 7,
+        "marker_width": 24
+      },
+      "label": "expected bool"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

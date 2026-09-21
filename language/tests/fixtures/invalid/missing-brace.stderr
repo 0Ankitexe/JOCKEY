@@ -1,0 +1,5 @@
+error[missing-delimiter]: missing delimiter
+  --> language/tests/fixtures/invalid/missing-brace.jky:3:24
+   |
+3 | fn inspect() -> report {
+   |                        ^ missing closing }

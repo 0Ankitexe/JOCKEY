@@ -1,0 +1,113 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rust-ubuntu:
+    name: Rust / Ubuntu
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python ci/prepare_legacy_ast_schema.py
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - run: cargo fmt --check
+      - run: cargo fetch --locked
+      - run: cargo clippy --offline --workspace --all-targets --locked -- -D warnings
+      - name: Versions 0–3 regression, goldens, bounds and fixed-seed campaigns
+        run: cargo test --offline --workspace --locked
+      - name: Version 3 deployed schemas and fixture/file safety
+        run: |
+          cargo test --offline --locked -p jocky-ir --test schema --test report --test safety
+          cargo test --offline --locked -p jocky-language --test artifact_io --test artifact_reads --test artifact_publish --test fixture_cli
+
+  rust-windows:
+    name: Rust / Windows
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python ci/prepare_legacy_ast_schema.py
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - run: cargo fmt --check
+      - run: cargo fetch --locked
+      - run: cargo clippy --offline --workspace --all-targets --locked -- -D warnings
+      - name: Versions 0–3 regression, goldens, bounds and fixed-seed campaigns
+        run: cargo test --offline --workspace --locked
+      - name: Version 3 deployed schemas and fixture/file safety
+        run: |
+          cargo test --offline --locked -p jocky-ir --test schema --test report --test safety
+          cargo test --offline --locked -p jocky-language --test artifact_io --test artifact_reads --test artifact_publish --test fixture_cli
+
+  controller:
+    name: Python controller
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: controller
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: controller/pyproject.toml
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m ruff format --check .
+      - run: python -m ruff check .
+      - run: python -m mypy
+      - run: python -m pytest
+      - name: Check offline schema preparation utility
+        working-directory: .
+        run: |
+          python -m ruff format --check --config controller/pyproject.toml ci/prepare_legacy_ast_schema.py tests/test_prepare_legacy_ast_schema.py
+          python -m ruff check --config controller/pyproject.toml ci/prepare_legacy_ast_schema.py tests/test_prepare_legacy_ast_schema.py
+          python -m mypy --strict --explicit-package-bases ci/prepare_legacy_ast_schema.py tests/test_prepare_legacy_ast_schema.py
+          python -m pytest tests/test_prepare_legacy_ast_schema.py
+
+  dashboard:
+    name: TypeScript dashboard
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  compose-config:
+    name: Docker Compose configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose --env-file .env.example config --quiet

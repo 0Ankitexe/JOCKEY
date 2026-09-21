@@ -1,0 +1,5 @@
+target windows
+module wrong_order
+fn inspect() -> report {
+    return report()
+}

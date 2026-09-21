@@ -1,0 +1,6 @@
+module demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    if true { return forensic.system.profile(target) } else { return forensic.system.profile(target) }
+}
+run main on selected_endpoints

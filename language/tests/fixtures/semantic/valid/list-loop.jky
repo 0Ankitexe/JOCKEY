@@ -1,0 +1,8 @@
+module demo
+target windows | ubuntu
+fn consume(value: process_record) -> process_record { return value }
+fn main(target: endpoint) -> forensic_result {
+    for item in forensic.process.list(target) { consume(item) }
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

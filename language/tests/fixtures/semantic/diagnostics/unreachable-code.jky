@@ -1,0 +1,7 @@
+module demo
+target ubuntu
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+    let unused = 1
+}
+run main on selected_endpoints

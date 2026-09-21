@@ -1,0 +1,618 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "examples/types-and-literals.jky",
+    "byte_length": 625,
+    "sha256": "ad302eb8a7ebc61a31b7c53f19169a3dc0342f074f18ee01539f50790d770b0c"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "type_examples",
+    "span": {
+      "start": 0,
+      "end": 20
+    }
+  },
+  "targets": [
+    "ubuntu"
+  ],
+  "profile": null,
+  "entry": 2,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [
+      "system"
+    ],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [
+      "forensic.system.profile"
+    ],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [
+    {
+      "module": "forensic.system",
+      "name": "profile",
+      "version": "0.1.0",
+      "parameters": [
+        {
+          "name": "target",
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          }
+        }
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "required_privilege": "user",
+      "capability": "system",
+      "read_only": true,
+      "lab_only": false,
+      "possible_errors": [
+        {
+          "code": "Unsupported",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "PermissionDenied",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "ResourceLimit",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        },
+        {
+          "code": "CollectionFailed",
+          "type": {
+            "kind": "named",
+            "name": "diagnostic_error"
+          }
+        }
+      ],
+      "availability": "unavailable"
+    }
+  ],
+  "constants": [
+    {
+      "kind": "string",
+      "value": "offline\ntriage"
+    },
+    {
+      "kind": "int",
+      "value": "999999999999999999999999999999"
+    },
+    {
+      "kind": "duration",
+      "magnitude": "250",
+      "unit": "ms"
+    },
+    {
+      "kind": "bool",
+      "value": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "summarize",
+      "span": {
+        "start": 35,
+        "end": 388
+      },
+      "parameters": [
+        0,
+        1
+      ],
+      "result": {
+        "kind": "list",
+        "element": {
+          "kind": "option",
+          "element": {
+            "kind": "named",
+            "name": "process_record"
+          }
+        }
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "option",
+              "element": {
+                "kind": "named",
+                "name": "process_record"
+              }
+            }
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "records",
+          "span": {
+            "start": 53,
+            "end": 60
+          }
+        },
+        {
+          "type": {
+            "kind": "option",
+            "element": {
+              "kind": "result",
+              "ok": {
+                "kind": "named",
+                "name": "forensic_result"
+              },
+              "error": {
+                "kind": "named",
+                "name": "diagnostic_error"
+              }
+            }
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "prior",
+          "span": {
+            "start": 96,
+            "end": 101
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "string"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 205,
+            "end": 222
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "string"
+          },
+          "region": 0,
+          "kind": "local",
+          "name": "label",
+          "span": {
+            "start": 197,
+            "end": 202
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 242,
+            "end": 272
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "local",
+          "name": "attempts",
+          "span": {
+            "start": 231,
+            "end": 239
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "duration"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 291,
+            "end": 296
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "duration"
+          },
+          "region": 0,
+          "kind": "local",
+          "name": "timeout",
+          "span": {
+            "start": 281,
+            "end": 288
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "bool"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 315,
+            "end": 319
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "bool"
+          },
+          "region": 0,
+          "kind": "local",
+          "name": "enabled",
+          "span": {
+            "start": 305,
+            "end": 312
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "string"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 324,
+            "end": 367
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "27653fee-18fb-8fb5-b5ed-8751ebdb6959",
+              "span": {
+                "start": 205,
+                "end": 222
+              },
+              "op": "const",
+              "destination": 2,
+              "constant": 0
+            },
+            {
+              "id": "ec83f218-2e24-8ab9-bdc1-62fe6e5b6a7f",
+              "span": {
+                "start": 193,
+                "end": 222
+              },
+              "op": "copy",
+              "destination": 3,
+              "source": 2
+            },
+            {
+              "id": "02598aec-09eb-8263-9d60-912f5e948c44",
+              "span": {
+                "start": 242,
+                "end": 272
+              },
+              "op": "const",
+              "destination": 4,
+              "constant": 1
+            },
+            {
+              "id": "ebfad3f5-a1e2-8dac-a823-a55b240ed11a",
+              "span": {
+                "start": 227,
+                "end": 272
+              },
+              "op": "copy",
+              "destination": 5,
+              "source": 4
+            },
+            {
+              "id": "ed230bda-6499-8eb5-bc7c-c36d17dc7e5d",
+              "span": {
+                "start": 291,
+                "end": 296
+              },
+              "op": "const",
+              "destination": 6,
+              "constant": 2
+            },
+            {
+              "id": "59c06270-1209-80ae-b333-827888900c3c",
+              "span": {
+                "start": 277,
+                "end": 296
+              },
+              "op": "copy",
+              "destination": 7,
+              "source": 6
+            },
+            {
+              "id": "c8852872-a4f0-8788-8942-4ffc3e3a978d",
+              "span": {
+                "start": 315,
+                "end": 319
+              },
+              "op": "const",
+              "destination": 8,
+              "constant": 3
+            },
+            {
+              "id": "fbeb5d18-3db3-8e51-88d7-e9176b20d665",
+              "span": {
+                "start": 301,
+                "end": 319
+              },
+              "op": "copy",
+              "destination": 9,
+              "source": 8
+            },
+            {
+              "id": "65922c8c-7102-8491-890d-b6aeaa2c8bae",
+              "span": {
+                "start": 324,
+                "end": 367
+              },
+              "op": "call",
+              "destination": 10,
+              "callee": {
+                "kind": "source",
+                "function": 1
+              },
+              "arguments": [
+                3,
+                5,
+                7,
+                9
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "895992d9-a545-8a18-8acb-221006ab6273",
+              "span": {
+                "start": 372,
+                "end": 386
+              },
+              "op": "return",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "describe",
+      "span": {
+        "start": 389,
+        "end": 495
+      },
+      "parameters": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "result": {
+        "kind": "named",
+        "name": "string"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "string"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "label",
+          "span": {
+            "start": 401,
+            "end": 406
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "int"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "attempts",
+          "span": {
+            "start": 416,
+            "end": 424
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "duration"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "timeout",
+          "span": {
+            "start": 431,
+            "end": 438
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "bool"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "enabled",
+          "span": {
+            "start": 450,
+            "end": 457
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "594af198-b2c3-8e93-bbba-69a2cd0807d1",
+              "span": {
+                "start": 481,
+                "end": 493
+              },
+              "op": "return",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "inspect",
+      "span": {
+        "start": 496,
+        "end": 590
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 507,
+            "end": 513
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 557,
+            "end": 588
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "341cc2f0-85cc-88ae-923a-d9a78fbb048a",
+              "span": {
+                "start": 557,
+                "end": 588
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "contract",
+                "contract": 0
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "b946e30c-5794-8156-ba79-f9d3bf8722c6",
+              "span": {
+                "start": 550,
+                "end": 588
+              },
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [
+          "system"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.system.profile"
+        ],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

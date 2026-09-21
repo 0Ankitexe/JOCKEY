@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "not-a-collection.jky",
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "unused-binding",
+      "message": "local binding is never used: x",
+      "location": {
+        "span": {
+          "start": 91,
+          "end": 92
+        },
+        "start": {
+          "line": 4,
+          "column": 9
+        },
+        "end": {
+          "line": 4,
+          "column": 10
+        },
+        "snippet": "    for x in \"text\" { forensic.system.profile(target) }",
+        "marker_start": 8,
+        "marker_width": 1
+      },
+      "label": "unused binding"
+    },
+    {
+      "severity": "error",
+      "code": "not-a-collection",
+      "message": "for requires list<T>; found string",
+      "location": {
+        "span": {
+          "start": 96,
+          "end": 102
+        },
+        "start": {
+          "line": 4,
+          "column": 14
+        },
+        "end": {
+          "line": 4,
+          "column": 20
+        },
+        "snippet": "    for x in \"text\" { forensic.system.profile(target) }",
+        "marker_start": 13,
+        "marker_width": 6
+      },
+      "label": "expected a list"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

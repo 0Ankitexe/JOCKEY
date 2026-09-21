@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "lab-profile-required.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "lab-profile-required",
+      "message": "function requires an explicit profile lab declaration: forensic.lab.inspect",
+      "location": {
+        "span": {
+          "start": 77,
+          "end": 97
+        },
+        "start": {
+          "line": 4,
+          "column": 5
+        },
+        "end": {
+          "line": 4,
+          "column": 25
+        },
+        "snippet": "    forensic.lab.inspect()",
+        "marker_start": 4,
+        "marker_width": 20
+      },
+      "label": "lab profile required"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

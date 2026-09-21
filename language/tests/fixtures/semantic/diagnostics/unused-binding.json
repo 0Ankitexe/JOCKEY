@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "status": "valid",
+  "file": "unused-binding.jky",
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "unused-binding",
+      "message": "local binding is never used: _unused",
+      "location": {
+        "span": {
+          "start": 137,
+          "end": 144
+        },
+        "start": {
+          "line": 5,
+          "column": 9
+        },
+        "end": {
+          "line": 5,
+          "column": 16
+        },
+        "snippet": "    let _unused = 1",
+        "marker_start": 8,
+        "marker_width": 7
+      },
+      "label": "unused binding"
+    },
+    {
+      "severity": "warning",
+      "code": "unused-binding",
+      "message": "local binding is never used: unused_loop",
+      "location": {
+        "span": {
+          "start": 157,
+          "end": 168
+        },
+        "start": {
+          "line": 6,
+          "column": 9
+        },
+        "end": {
+          "line": 6,
+          "column": 20
+        },
+        "snippet": "    for unused_loop in forensic.process.list(target) { forensic.system.profile(target) }",
+        "marker_start": 8,
+        "marker_width": 11
+      },
+      "label": "unused binding"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": {
+    "module": "demo",
+    "selected_targets": [
+      "windows",
+      "ubuntu"
+    ],
+    "profile": "standard",
+    "entry": {
+      "name": "demo.main",
+      "required_privilege": "user",
+      "capabilities": [
+        "system",
+        "processes"
+      ],
+      "supported_platforms": [
+        "windows",
+        "ubuntu"
+      ],
+      "unavailable_dependencies": [
+        "forensic.process.list",
+        "forensic.system.profile"
+      ]
+    },
+    "functions": [
+      {
+        "name": "demo.helper",
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": []
+      },
+      {
+        "name": "demo.main",
+        "required_privilege": "user",
+        "capabilities": [
+          "system",
+          "processes"
+        ],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [
+          "forensic.process.list",
+          "forensic.system.profile"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/compiler/fixture/v1/bundle.schema.json",
+  "title": "JOCKY fixture bundle 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "fixture_id",
+    "endpoint",
+    "observed_at",
+    "providers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "fixture_id": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "endpoint": {
+      "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/endpoint"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 64,
+      "pattern": "Z$"
+    },
+    "providers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "forensic.system.profile",
+        "forensic.process.list",
+        "forensic.network.connections",
+        "forensic.indicator.correlate"
+      ],
+      "properties": {
+        "forensic.system.profile": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "value"],
+              "properties": {
+                "status": {
+                  "const": "ok"
+                },
+                "value": {
+                  "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_forensic_result"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "code"],
+              "properties": {
+                "status": {
+                  "const": "error"
+                },
+                "code": {
+                  "enum": [
+                    "Unsupported",
+                    "PermissionDenied",
+                    "ResourceLimit",
+                    "CollectionFailed"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "forensic.process.list": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "value"],
+              "properties": {
+                "status": {
+                  "const": "ok"
+                },
+                "value": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind", "element_type", "values"],
+                  "properties": {
+                    "kind": {
+                      "const": "list"
+                    },
+                    "element_type": {
+                      "const": {
+                        "kind": "named",
+                        "name": "process_record"
+                      }
+                    },
+                    "values": {
+                      "type": "array",
+                      "minItems": 0,
+                      "maxItems": 10000,
+                      "items": {
+                        "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_process_record"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "code"],
+              "properties": {
+                "status": {
+                  "const": "error"
+                },
+                "code": {
+                  "enum": [
+                    "Unsupported",
+                    "PermissionDenied",
+                    "ResourceLimit",
+                    "CollectionFailed"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "forensic.network.connections": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "value"],
+              "properties": {
+                "status": {
+                  "const": "ok"
+                },
+                "value": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind", "element_type", "values"],
+                  "properties": {
+                    "kind": {
+                      "const": "list"
+                    },
+                    "element_type": {
+                      "const": {
+                        "kind": "named",
+                        "name": "connection_record"
+                      }
+                    },
+                    "values": {
+                      "type": "array",
+                      "minItems": 0,
+                      "maxItems": 10000,
+                      "items": {
+                        "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_connection_record"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "code"],
+              "properties": {
+                "status": {
+                  "const": "error"
+                },
+                "code": {
+                  "enum": [
+                    "Unsupported",
+                    "PermissionDenied",
+                    "ResourceLimit",
+                    "CollectionFailed"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "forensic.indicator.correlate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["expected", "outcome"],
+          "properties": {
+            "expected": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["system", "processes", "connections"],
+              "properties": {
+                "system": {
+                  "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_forensic_result"
+                },
+                "processes": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind", "element_type", "values"],
+                  "properties": {
+                    "kind": {
+                      "const": "list"
+                    },
+                    "element_type": {
+                      "const": {
+                        "kind": "named",
+                        "name": "process_record"
+                      }
+                    },
+                    "values": {
+                      "type": "array",
+                      "minItems": 0,
+                      "maxItems": 10000,
+                      "items": {
+                        "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_process_record"
+                      }
+                    }
+                  }
+                },
+                "connections": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind", "element_type", "values"],
+                  "properties": {
+                    "kind": {
+                      "const": "list"
+                    },
+                    "element_type": {
+                      "const": {
+                        "kind": "named",
+                        "name": "connection_record"
+                      }
+                    },
+                    "values": {
+                      "type": "array",
+                      "minItems": 0,
+                      "maxItems": 10000,
+                      "items": {
+                        "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_connection_record"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "outcome": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["status", "value"],
+                  "properties": {
+                    "status": {
+                      "const": "ok"
+                    },
+                    "value": {
+                      "$ref": "https://jocky.dev/compiler/fixture/v1/values.schema.json#/$defs/value_forensic_result"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["status", "code"],
+                  "properties": {
+                    "status": {
+                      "const": "error"
+                    },
+                    "code": {
+                      "enum": [
+                        "NotImplemented",
+                        "InvalidInput",
+                        "ResourceLimit"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

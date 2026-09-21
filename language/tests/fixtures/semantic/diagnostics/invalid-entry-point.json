@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "invalid-entry-point.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "invalid-entry-point",
+      "message": "run entry must name a source function with signature (endpoint) -> forensic_result",
+      "location": {
+        "span": {
+          "start": 132,
+          "end": 138
+        },
+        "start": {
+          "line": 6,
+          "column": 5
+        },
+        "end": {
+          "line": 6,
+          "column": 11
+        },
+        "snippet": "run absent on selected_endpoints",
+        "marker_start": 4,
+        "marker_width": 6
+      },
+      "label": "invalid run entry point"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

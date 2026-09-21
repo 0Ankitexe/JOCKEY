@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "status": "completed",
+  "file": "demo.jky",
+  "diagnostics": [],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": {
+    "module": "demo",
+    "selected_targets": ["ubuntu"],
+    "profile": "standard",
+    "entry": {
+      "name": "demo.main",
+      "required_privilege": "user",
+      "capabilities": [],
+      "supported_platforms": ["windows", "ubuntu"],
+      "unavailable_dependencies": []
+    },
+    "functions": [
+      {
+        "name": "demo.main",
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": ["windows", "ubuntu"],
+        "unavailable_dependencies": []
+      }
+    ]
+  }
+}

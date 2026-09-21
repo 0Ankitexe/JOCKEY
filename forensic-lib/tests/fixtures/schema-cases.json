@@ -1,0 +1,198 @@
+[
+  {
+    "file": "valid/schema-basic.json",
+    "error": null
+  },
+  {
+    "file": "invalid/schema-missing-module.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-name.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-version.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-parameters.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-result.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-supported_platforms.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-required_privilege.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-capability.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-read_only.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-lab_only.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-possible_errors.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-availability.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-schema_version.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-missing-functions.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-availability-15.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-required_privilege-16.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-capability-17.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-supported_platforms-18.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-supported_platforms-19.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-supported_platforms-20.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-result-21.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-result-22.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-result-23.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-lab_only-24.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-required_privilege-25.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-read_only-26.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-module-27.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-module-28.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-name-29.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-possible_errors-30.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-possible_errors-31.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-possible_errors-32.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-33.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-34.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-35.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-36.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-37.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-38.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-version-39.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "valid/schema-valid-version-40.json",
+    "error": null
+  },
+  {
+    "file": "valid/schema-valid-version-41.json",
+    "error": null
+  },
+  {
+    "file": "valid/schema-valid-version-42.json",
+    "error": null
+  },
+  {
+    "file": "invalid/schema-format-43.json",
+    "error": "UnsupportedVersion"
+  },
+  {
+    "file": "invalid/schema-format-44.json",
+    "error": "UnsupportedVersion"
+  },
+  {
+    "file": "invalid/schema-extra-root.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-extra-function.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-extra-parameter.json",
+    "error": "SchemaViolation"
+  },
+  {
+    "file": "invalid/schema-extra-type.json",
+    "error": "SchemaViolation"
+  }
+]

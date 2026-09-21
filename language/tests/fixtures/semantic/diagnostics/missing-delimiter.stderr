@@ -1,0 +1,5 @@
+error[missing-delimiter]: missing delimiter
+  --> missing-delimiter.jky:3:24
+   |
+3 | fn inspect() -> report {
+   |                        ^ missing closing }

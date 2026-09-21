@@ -1,0 +1,11 @@
+warning[unused-binding]: local binding is never used: x
+  --> not-a-collection.jky:4:9
+   |
+4 |     for x in "text" { forensic.system.profile(target) }
+   |         ^ unused binding
+
+error[not-a-collection]: for requires list<T>; found string
+  --> not-a-collection.jky:4:14
+   |
+4 |     for x in "text" { forensic.system.profile(target) }
+   |              ^^^^^^ expected a list

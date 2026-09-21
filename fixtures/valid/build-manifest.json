@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "build_id": "66666666-6666-4666-8666-666666666666",
+  "package_id": "77777777-7777-4777-8777-777777777777",
+  "built_at": "2026-08-30T11:55:00Z",
+  "language_version": "0.0.0",
+  "ir_version": "0.0.0",
+  "compiler_version": "0.0.0",
+  "package_format": "jocky-package-v1",
+  "target": {
+    "platform": "ubuntu",
+    "architecture": "x86_64"
+  },
+  "build_profile": "development",
+  "entrypoint": "triage.investigate",
+  "required_capabilities": ["system", "network"],
+  "required_privilege": "user",
+  "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "native_dependencies": [],
+  "transformations": []
+}
+

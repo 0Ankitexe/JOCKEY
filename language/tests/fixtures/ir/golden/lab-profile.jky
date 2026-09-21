@@ -1,0 +1,9 @@
+module declared_lab
+target windows
+profile lab
+fn drivers(target: endpoint) -> list<driver_record> { return forensic.driver.list(target) }
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

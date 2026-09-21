@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "hand-authored.jky",
+    "byte_length": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "fixture_program",
+    "span": {
+      "start": 0,
+      "end": 1
+    }
+  },
+  "targets": [
+    "windows",
+    "ubuntu"
+  ],
+  "profile": null,
+  "entry": 0,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [],
+  "constants": [
+    {
+      "kind": "forensic_result",
+      "value": {
+        "endpoint_id": "00000000-0000-4000-8000-000000000001",
+        "observed_at": "2026-09-18T00:00:00Z",
+        "system": {
+          "platform": "ubuntu",
+          "hostname": "fixture-ubuntu",
+          "release": "synthetic"
+        },
+        "indicators": [
+          {
+            "indicator_id": "00000000-0000-4000-8000-000000000020",
+            "kind": "fixture_match",
+            "message": "Authored fixture match; not live detection.",
+            "record_ids": [
+              "00000000-0000-4000-8000-000000000010",
+              "00000000-0000-4000-8000-000000000011"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "functions": [
+    {
+      "name": "main",
+      "span": null,
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": null
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": null
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "9588b0be-5133-8fa1-91b9-1b78192d24f3",
+              "span": null,
+              "op": "const",
+              "destination": 1,
+              "constant": 0
+            },
+            {
+              "id": "885c2df3-1c82-8206-b375-eaf27e812a2b",
+              "span": null,
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

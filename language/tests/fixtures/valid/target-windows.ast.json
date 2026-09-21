@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 112
+    },
+    "module": {
+      "name": {
+        "text": "win_only",
+        "span": {
+          "start": 7,
+          "end": 15
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 15
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 23,
+            "end": 30
+          }
+        }
+      ],
+      "span": {
+        "start": 16,
+        "end": 30
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "inspect",
+          "span": {
+            "start": 34,
+            "end": 41
+          }
+        },
+        "parameters": [],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 47,
+              "end": 53
+            }
+          },
+          "span": {
+            "start": 47,
+            "end": 53
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 67,
+                        "end": 73
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 67,
+                    "end": 73
+                  }
+                },
+                "arguments": [],
+                "span": {
+                  "start": 67,
+                  "end": 75
+                }
+              },
+              "span": {
+                "start": 60,
+                "end": 75
+              }
+            }
+          ],
+          "span": {
+            "start": 54,
+            "end": 77
+          }
+        },
+        "span": {
+          "start": 31,
+          "end": 77
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "inspect",
+        "span": {
+          "start": 82,
+          "end": 89
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 93,
+        "end": 111
+      },
+      "span": {
+        "start": 78,
+        "end": 111
+      }
+    }
+  }
+}

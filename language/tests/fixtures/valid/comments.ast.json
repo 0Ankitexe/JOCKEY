@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 328
+    },
+    "module": {
+      "name": {
+        "text": "comments",
+        "span": {
+          "start": 31,
+          "end": 39
+        }
+      },
+      "span": {
+        "start": 24,
+        "end": 39
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 73,
+            "end": 80
+          }
+        }
+      ],
+      "span": {
+        "start": 66,
+        "end": 80
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "inspect",
+          "span": {
+            "start": 102,
+            "end": 109
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "target",
+              "span": {
+                "start": 133,
+                "end": 139
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "endpoint",
+                "span": {
+                  "start": 141,
+                  "end": 149
+                }
+              },
+              "span": {
+                "start": 141,
+                "end": 149
+              }
+            },
+            "span": {
+              "start": 133,
+              "end": 149
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 154,
+              "end": 160
+            }
+          },
+          "span": {
+            "start": 154,
+            "end": 160
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 252,
+                        "end": 258
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 252,
+                    "end": 258
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "target",
+                      "span": {
+                        "start": 259,
+                        "end": 265
+                      }
+                    },
+                    "span": {
+                      "start": 259,
+                      "end": 265
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 252,
+                  "end": 266
+                }
+              },
+              "span": {
+                "start": 245,
+                "end": 266
+              }
+            }
+          ],
+          "span": {
+            "start": 161,
+            "end": 293
+          }
+        },
+        "span": {
+          "start": 99,
+          "end": 293
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "inspect",
+        "span": {
+          "start": 298,
+          "end": 305
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 309,
+        "end": 327
+      },
+      "span": {
+        "start": 294,
+        "end": 327
+      }
+    }
+  }
+}

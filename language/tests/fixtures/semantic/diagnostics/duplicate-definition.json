@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "duplicate-definition.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "duplicate-definition",
+      "message": "duplicate or reserved definition: main",
+      "location": {
+        "span": {
+          "start": 127,
+          "end": 131
+        },
+        "start": {
+          "line": 4,
+          "column": 4
+        },
+        "end": {
+          "line": 4,
+          "column": 8
+        },
+        "snippet": "fn main(target: endpoint) -> forensic_result {",
+        "marker_start": 3,
+        "marker_width": 4
+      },
+      "label": "conflicting definition"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

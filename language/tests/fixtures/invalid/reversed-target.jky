@@ -1,0 +1,5 @@
+module reversed_target
+target ubuntu | windows
+fn inspect() -> report {
+    return report()
+}

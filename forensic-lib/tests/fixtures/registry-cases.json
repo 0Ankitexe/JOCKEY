@@ -1,0 +1,10 @@
+[
+  {
+    "file": "valid/consistency-lab-registry.json",
+    "error": null
+  },
+  {
+    "file": "invalid/consistency-duplicate-keys.json",
+    "error": "DuplicateJsonKey"
+  }
+]

@@ -1,0 +1,6 @@
+module undefined_name
+target windows
+fn inspect() -> report {
+    return missing_name
+}
+run inspect on selected_endpoints

@@ -1,0 +1,15 @@
+module ubuntu_events
+target ubuntu
+
+// This uncalled helper demonstrates an Ubuntu-only contract.
+// No timestamp constructor or event collector exists in this version.
+fn events(target: endpoint, since: timestamp, until: timestamp) -> list<event_record> {
+    return forensic.event.ubuntu_journal(target, since, until, 100)
+}
+
+// The run entry does not call events, so its metadata is system/user/both.
+fn investigate(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+
+run investigate on selected_endpoints

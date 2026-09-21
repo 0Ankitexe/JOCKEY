@@ -1,0 +1,12 @@
+module literal_forms
+target ubuntu
+fn literals() -> report {
+    let text = "line\nquote: \" slash: \\ tab:\t carriage:\r"
+    let positive = 999999999999999999999999999999999999999999
+    let negative = -999999999999999999999999999999999999999999
+    let enabled = true
+    let disabled = false
+    let timeout = 999999999999999999999999999999999999999999ms
+    return report(text, positive, negative, enabled, disabled, timeout, 0, 0s, 2m, 3h, 4d)
+}
+run literals on selected_endpoints

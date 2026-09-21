@@ -1,0 +1,12 @@
+module demo
+target windows | ubuntu
+fn take(value: int) -> int { return value }
+fn main(target: endpoint) -> forensic_result {
+    let x = 1
+    if true { let x = x take(x) } else { let x = 2 take(x) }
+    take(x)
+    let forensic = 0
+    take(forensic)
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

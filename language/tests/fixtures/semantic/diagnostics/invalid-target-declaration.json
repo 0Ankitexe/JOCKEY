@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "invalid-target-declaration.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "invalid-target-declaration",
+      "message": "target must be windows, ubuntu, or windows | ubuntu",
+      "location": {
+        "span": {
+          "start": 29,
+          "end": 34
+        },
+        "start": {
+          "line": 2,
+          "column": 8
+        },
+        "end": {
+          "line": 2,
+          "column": 13
+        },
+        "snippet": "target macos",
+        "marker_start": 7,
+        "marker_width": 5
+      },
+      "label": "unsupported target"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

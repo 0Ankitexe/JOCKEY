@@ -1,0 +1,7 @@
+module duplicate_run
+target ubuntu
+fn inspect() -> report {
+    return report()
+}
+run inspect on selected_endpoints
+run inspect on selected_endpoints

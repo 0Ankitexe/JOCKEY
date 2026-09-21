@@ -1,0 +1,5 @@
+module result_close
+target windows
+fn inspect() -> result<report, failure {
+    return report()
+}

@@ -1,0 +1,9 @@
+module demo
+target windows | ubuntu
+fn main(target: endpoint) -> forensic_result {
+    let only_dead = 1
+    return forensic.system.profile(target)
+    let copy = only_dead
+    missing()
+}
+run main on selected_endpoints

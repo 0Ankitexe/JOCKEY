@@ -1,0 +1,5 @@
+error[missing-delimiter]: missing delimiter
+  --> language/tests/fixtures/invalid/unterminated-string.jky:4:12
+   |
+4 |     return "unfinished
+   |            ^ missing closing quote

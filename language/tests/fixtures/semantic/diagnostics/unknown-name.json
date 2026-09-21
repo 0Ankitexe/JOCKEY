@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "unknown-name.jky",
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "unused-binding",
+      "message": "local binding is never used: x",
+      "location": {
+        "span": {
+          "start": 91,
+          "end": 92
+        },
+        "start": {
+          "line": 4,
+          "column": 9
+        },
+        "end": {
+          "line": 4,
+          "column": 10
+        },
+        "snippet": "    let x = unknown",
+        "marker_start": 8,
+        "marker_width": 1
+      },
+      "label": "unused binding"
+    },
+    {
+      "severity": "error",
+      "code": "unknown-name",
+      "message": "unknown name: unknown",
+      "location": {
+        "span": {
+          "start": 95,
+          "end": 102
+        },
+        "start": {
+          "line": 4,
+          "column": 13
+        },
+        "end": {
+          "line": 4,
+          "column": 20
+        },
+        "snippet": "    let x = unknown",
+        "marker_start": 12,
+        "marker_width": 7
+      },
+      "label": "name is not defined"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

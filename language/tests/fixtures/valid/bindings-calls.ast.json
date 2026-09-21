@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 223
+    },
+    "module": {
+      "name": {
+        "text": "bindings_calls",
+        "span": {
+          "start": 7,
+          "end": 21
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 21
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 29,
+            "end": 35
+          }
+        }
+      ],
+      "span": {
+        "start": 22,
+        "end": 35
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "gather",
+          "span": {
+            "start": 39,
+            "end": 45
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "target",
+              "span": {
+                "start": 46,
+                "end": 52
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "endpoint",
+                "span": {
+                  "start": 54,
+                  "end": 62
+                }
+              },
+              "span": {
+                "start": 54,
+                "end": 62
+              }
+            },
+            "span": {
+              "start": 46,
+              "end": 62
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 67,
+              "end": 73
+            }
+          },
+          "span": {
+            "start": 67,
+            "end": 73
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "let",
+              "name": {
+                "text": "profile",
+                "span": {
+                  "start": 84,
+                  "end": 91
+                }
+              },
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "forensic",
+                      "span": {
+                        "start": 94,
+                        "end": 102
+                      }
+                    },
+                    {
+                      "text": "system",
+                      "span": {
+                        "start": 103,
+                        "end": 109
+                      }
+                    },
+                    {
+                      "text": "profile",
+                      "span": {
+                        "start": 110,
+                        "end": 117
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 94,
+                    "end": 117
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "target",
+                      "span": {
+                        "start": 118,
+                        "end": 124
+                      }
+                    },
+                    "span": {
+                      "start": 118,
+                      "end": 124
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 94,
+                  "end": 125
+                }
+              },
+              "span": {
+                "start": 80,
+                "end": 125
+              }
+            },
+            {
+              "kind": "call",
+              "callee": {
+                "segments": [
+                  {
+                    "text": "forensic",
+                    "span": {
+                      "start": 130,
+                      "end": 138
+                    }
+                  },
+                  {
+                    "text": "audit",
+                    "span": {
+                      "start": 139,
+                      "end": 144
+                    }
+                  },
+                  {
+                    "text": "record",
+                    "span": {
+                      "start": 145,
+                      "end": 151
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 130,
+                  "end": 151
+                }
+              },
+              "arguments": [
+                {
+                  "kind": "identifier",
+                  "identifier": {
+                    "text": "profile",
+                    "span": {
+                      "start": 152,
+                      "end": 159
+                    }
+                  },
+                  "span": {
+                    "start": 152,
+                    "end": 159
+                  }
+                }
+              ],
+              "span": {
+                "start": 130,
+                "end": 160
+              }
+            },
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 172,
+                        "end": 178
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 172,
+                    "end": 178
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "profile",
+                      "span": {
+                        "start": 179,
+                        "end": 186
+                      }
+                    },
+                    "span": {
+                      "start": 179,
+                      "end": 186
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 172,
+                  "end": 187
+                }
+              },
+              "span": {
+                "start": 165,
+                "end": 187
+              }
+            }
+          ],
+          "span": {
+            "start": 74,
+            "end": 189
+          }
+        },
+        "span": {
+          "start": 36,
+          "end": 189
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "gather",
+        "span": {
+          "start": 194,
+          "end": 200
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 204,
+        "end": 222
+      },
+      "span": {
+        "start": 190,
+        "end": 222
+      }
+    }
+  }
+}

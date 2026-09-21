@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 217
+    },
+    "module": {
+      "name": {
+        "text": "bounded_iteration",
+        "span": {
+          "start": 7,
+          "end": 24
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 24
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 32,
+            "end": 39
+          }
+        },
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 42,
+            "end": 48
+          }
+        }
+      ],
+      "span": {
+        "start": 25,
+        "end": 48
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "inspect",
+          "span": {
+            "start": 52,
+            "end": 59
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "items",
+              "span": {
+                "start": 60,
+                "end": 65
+              }
+            },
+            "type_ref": {
+              "kind": "list",
+              "element": {
+                "kind": "named",
+                "name": {
+                  "text": "endpoint",
+                  "span": {
+                    "start": 72,
+                    "end": 80
+                  }
+                },
+                "span": {
+                  "start": 72,
+                  "end": 80
+                }
+              },
+              "span": {
+                "start": 67,
+                "end": 81
+              }
+            },
+            "span": {
+              "start": 60,
+              "end": 81
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "named",
+          "name": {
+            "text": "report",
+            "span": {
+              "start": 86,
+              "end": 92
+            }
+          },
+          "span": {
+            "start": 86,
+            "end": 92
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "for",
+              "binding": {
+                "text": "item",
+                "span": {
+                  "start": 103,
+                  "end": 107
+                }
+              },
+              "collection": {
+                "kind": "identifier",
+                "identifier": {
+                  "text": "items",
+                  "span": {
+                    "start": 111,
+                    "end": 116
+                  }
+                },
+                "span": {
+                  "start": 111,
+                  "end": 116
+                }
+              },
+              "body": {
+                "statements": [
+                  {
+                    "kind": "call",
+                    "callee": {
+                      "segments": [
+                        {
+                          "text": "forensic",
+                          "span": {
+                            "start": 127,
+                            "end": 135
+                          }
+                        },
+                        {
+                          "text": "process",
+                          "span": {
+                            "start": 136,
+                            "end": 143
+                          }
+                        },
+                        {
+                          "text": "list",
+                          "span": {
+                            "start": 144,
+                            "end": 148
+                          }
+                        }
+                      ],
+                      "span": {
+                        "start": 127,
+                        "end": 148
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "kind": "identifier",
+                        "identifier": {
+                          "text": "item",
+                          "span": {
+                            "start": 149,
+                            "end": 153
+                          }
+                        },
+                        "span": {
+                          "start": 149,
+                          "end": 153
+                        }
+                      }
+                    ],
+                    "span": {
+                      "start": 127,
+                      "end": 154
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 117,
+                  "end": 160
+                }
+              },
+              "span": {
+                "start": 99,
+                "end": 160
+              }
+            },
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "report",
+                      "span": {
+                        "start": 172,
+                        "end": 178
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 172,
+                    "end": 178
+                  }
+                },
+                "arguments": [],
+                "span": {
+                  "start": 172,
+                  "end": 180
+                }
+              },
+              "span": {
+                "start": 165,
+                "end": 180
+              }
+            }
+          ],
+          "span": {
+            "start": 93,
+            "end": 182
+          }
+        },
+        "span": {
+          "start": 49,
+          "end": 182
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "inspect",
+        "span": {
+          "start": 187,
+          "end": 194
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 198,
+        "end": 216
+      },
+      "span": {
+        "start": 183,
+        "end": 216
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+error[lab-profile-required]: function requires an explicit profile lab declaration: forensic.lab.inspect
+  --> lab-profile-required.jky:4:5
+   |
+4 |     forensic.lab.inspect()
+   |     ^^^^^^^^^^^^^^^^^^^^ lab profile required

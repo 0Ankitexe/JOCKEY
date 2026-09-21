@@ -1,0 +1,9 @@
+module duplicate_functions
+target ubuntu
+fn same() -> report {
+    return first()
+}
+fn same() -> report {
+    return second()
+}
+run same on selected_endpoints

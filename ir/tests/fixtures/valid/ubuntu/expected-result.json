@@ -1,0 +1,23 @@
+{
+  "kind": "forensic_result",
+  "value": {
+    "endpoint_id": "00000000-0000-4000-8000-000000000001",
+    "observed_at": "2026-09-18T00:00:00Z",
+    "system": {
+      "platform": "ubuntu",
+      "hostname": "fixture-ubuntu",
+      "release": "synthetic"
+    },
+    "indicators": [
+      {
+        "indicator_id": "00000000-0000-4000-8000-000000000020",
+        "kind": "fixture_match",
+        "message": "Authored fixture match; not live detection.",
+        "record_ids": [
+          "00000000-0000-4000-8000-000000000010",
+          "00000000-0000-4000-8000-000000000011"
+        ]
+      }
+    ]
+  }
+}

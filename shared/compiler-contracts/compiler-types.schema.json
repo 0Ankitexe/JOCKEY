@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jocky.dev/compiler/v1/types.schema.json",
+  "title": "JOCKY compiler contract vocabulary 1.0.0",
+  "description": "Span-free semantic types and compiler metadata. Separate from operational message schemas.",
+  "$ref": "#/$defs/type",
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+      "not": {
+        "anyOf": [
+          {
+            "pattern": "[^A-Za-z0-9_]"
+          },
+          {
+            "enum": [
+              "module",
+              "windows",
+              "ubuntu",
+              "fn",
+              "let",
+              "if",
+              "else",
+              "for",
+              "in",
+              "return",
+              "run",
+              "on",
+              "selected_endpoints",
+              "true",
+              "false"
+            ]
+          }
+        ]
+      }
+    },
+    "qualifiedName": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*)*$",
+      "not": {
+        "anyOf": [
+          {
+            "pattern": "[^A-Za-z0-9_.]"
+          },
+          {
+            "pattern": "(^|\\.)(module|windows|ubuntu|fn|let|if|else|for|in|return|run|on|selected_endpoints|true|false)(\\.|$)"
+          }
+        ]
+      }
+    },
+    "type": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["named", "list", "option", "result"] }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "kind": { "const": "named" } },
+            "required": ["kind"]
+          },
+          "then": { "$ref": "#/$defs/namedType" }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "list" } },
+            "required": ["kind"]
+          },
+          "then": { "$ref": "#/$defs/listType" }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "option" } },
+            "required": ["kind"]
+          },
+          "then": { "$ref": "#/$defs/optionType" }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "result" } },
+            "required": ["kind"]
+          },
+          "then": { "$ref": "#/$defs/resultType" }
+        }
+      ]
+    },
+    "namedType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name"],
+      "properties": {
+        "kind": {
+          "const": "named"
+        },
+        "name": {
+          "enum": [
+            "bool",
+            "int",
+            "string",
+            "bytes",
+            "duration",
+            "timestamp",
+            "endpoint",
+            "platform",
+            "ip_address",
+            "path",
+            "process_record",
+            "connection_record",
+            "file_record",
+            "event_record",
+            "persistence_record",
+            "driver_record",
+            "forensic_result",
+            "diagnostic_error"
+          ]
+        }
+      }
+    },
+    "listType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "element"],
+      "properties": {
+        "kind": {
+          "const": "list"
+        },
+        "element": {
+          "$ref": "#/$defs/type"
+        }
+      }
+    },
+    "optionType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "element"],
+      "properties": {
+        "kind": {
+          "const": "option"
+        },
+        "element": {
+          "$ref": "#/$defs/type"
+        }
+      }
+    },
+    "resultType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ok", "error"],
+      "properties": {
+        "kind": {
+          "const": "result"
+        },
+        "ok": {
+          "$ref": "#/$defs/type"
+        },
+        "error": {
+          "$ref": "#/$defs/type"
+        }
+      }
+    },
+    "platform": {
+      "enum": ["windows", "ubuntu"]
+    },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/platform"
+      }
+    },
+    "privilege": {
+      "enum": ["user", "elevated", "lab_only"]
+    },
+    "capability": {
+      "enum": [
+        "system",
+        "processes",
+        "network",
+        "files",
+        "events",
+        "persistence",
+        "drivers",
+        "indicators"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    },
+    "availability": {
+      "const": "unavailable"
+    },
+    "errorCode": {
+      "enum": [
+        "NotImplemented",
+        "Unsupported",
+        "PermissionDenied",
+        "InvalidInput",
+        "NotFound",
+        "ResourceLimit",
+        "Timeout",
+        "CollectionFailed"
+      ]
+    },
+    "span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

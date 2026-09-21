@@ -1,0 +1,7 @@
+module demo
+target windows | ubuntu
+fn bad(items: list<endpoint>) -> forensic_result { for item in items { return forensic.system.profile(item) } }
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run bad on selected_endpoints

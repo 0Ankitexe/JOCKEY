@@ -1,0 +1,5 @@
+module invalid_target
+target macos
+fn inspect() -> report {
+    return report()
+}

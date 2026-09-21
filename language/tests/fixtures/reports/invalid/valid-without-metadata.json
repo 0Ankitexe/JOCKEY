@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "status": "valid",
+  "file": "demo.jky",
+  "diagnostics": [],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

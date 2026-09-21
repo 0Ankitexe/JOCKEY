@@ -1,0 +1,6 @@
+module win_only
+target windows
+fn inspect() -> report {
+    return report()
+}
+run inspect on selected_endpoints

@@ -1,0 +1,7 @@
+module demo
+target windows | ubuntu
+fn helper(xs: list<int>) -> int { for x in xs { return x } }
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

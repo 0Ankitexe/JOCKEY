@@ -1,0 +1,5 @@
+error[condition-not-bool]: condition must have type bool; found int
+  --> language/tests/fixtures/semantic/invalid/non-bool-condition.jky:4:8
+   |
+4 |     if 1 { forensic.system.profile(target) }
+   |        ^ expected bool

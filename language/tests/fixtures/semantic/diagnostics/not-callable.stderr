@@ -1,0 +1,5 @@
+error[not-callable]: value is not callable: f
+  --> not-callable.jky:5:5
+   |
+5 |     f(target)
+   |     ^ expected a function

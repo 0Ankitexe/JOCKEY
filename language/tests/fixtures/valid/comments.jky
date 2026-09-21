@@ -1,0 +1,8 @@
+// leading line comment
+module comments /* declaration comment */
+target windows // target comment
+fn inspect(/* before parameter */ target: endpoint) -> report {
+    /* block comments are trivia and are intentionally absent from the AST */
+    return report(target) // trailing line comment
+}
+run inspect on selected_endpoints

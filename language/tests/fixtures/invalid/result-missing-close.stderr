@@ -1,0 +1,5 @@
+error[malformed-type]: malformed type
+  --> language/tests/fixtures/invalid/result-missing-close.jky:3:23
+   |
+3 | fn inspect() -> result<report, failure {
+   |                       ^ missing closing >

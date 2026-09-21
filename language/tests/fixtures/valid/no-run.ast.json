@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 100
+    },
+    "module": {
+      "name": {
+        "text": "library_only",
+        "span": {
+          "start": 7,
+          "end": 19
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 19
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 27,
+            "end": 33
+          }
+        }
+      ],
+      "span": {
+        "start": 20,
+        "end": 33
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "helper",
+          "span": {
+            "start": 37,
+            "end": 43
+          }
+        },
+        "parameters": [
+          {
+            "name": {
+              "text": "value",
+              "span": {
+                "start": 44,
+                "end": 49
+              }
+            },
+            "type_ref": {
+              "kind": "named",
+              "name": {
+                "text": "item",
+                "span": {
+                  "start": 51,
+                  "end": 55
+                }
+              },
+              "span": {
+                "start": 51,
+                "end": 55
+              }
+            },
+            "span": {
+              "start": 44,
+              "end": 55
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "option",
+          "element": {
+            "kind": "named",
+            "name": {
+              "text": "item",
+              "span": {
+                "start": 67,
+                "end": 71
+              }
+            },
+            "span": {
+              "start": 67,
+              "end": 71
+            }
+          },
+          "span": {
+            "start": 60,
+            "end": 72
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "call",
+                "callee": {
+                  "segments": [
+                    {
+                      "text": "wrap",
+                      "span": {
+                        "start": 86,
+                        "end": 90
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": 86,
+                    "end": 90
+                  }
+                },
+                "arguments": [
+                  {
+                    "kind": "identifier",
+                    "identifier": {
+                      "text": "value",
+                      "span": {
+                        "start": 91,
+                        "end": 96
+                      }
+                    },
+                    "span": {
+                      "start": 91,
+                      "end": 96
+                    }
+                  }
+                ],
+                "span": {
+                  "start": 86,
+                  "end": 97
+                }
+              },
+              "span": {
+                "start": 79,
+                "end": 97
+              }
+            }
+          ],
+          "span": {
+            "start": 73,
+            "end": 99
+          }
+        },
+        "span": {
+          "start": 34,
+          "end": 99
+        }
+      }
+    ],
+    "run": null
+  }
+}

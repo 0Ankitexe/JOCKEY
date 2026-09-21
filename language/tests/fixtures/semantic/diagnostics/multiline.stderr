@@ -1,0 +1,5 @@
+error[condition-not-bool]: condition must have type bool; found forensic_result
+  --> multiline.jky:4:8
+   |
+4 |     if forensic.system.profile(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^ expected bool

@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/wrong-top-level-order.jky:1:1
+   |
+1 | target windows
+   | ^ expected a complete program

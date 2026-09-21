@@ -1,0 +1,6 @@
+module questionable_return
+target windows | ubuntu
+fn answer() -> result<report, failure> {
+    return false
+}
+run answer on selected_endpoints

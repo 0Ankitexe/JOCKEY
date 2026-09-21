@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "status": "invalid",
+  "file": "argument-type-mismatch.jky",
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "argument-type-mismatch",
+      "message": "argument type mismatch: expected int, found string",
+      "location": {
+        "span": {
+          "start": 128,
+          "end": 135
+        },
+        "start": {
+          "line": 5,
+          "column": 10
+        },
+        "end": {
+          "line": 5,
+          "column": 17
+        },
+        "snippet": "    take(\"wrong\")",
+        "marker_start": 9,
+        "marker_width": 7
+      },
+      "label": "argument type mismatch"
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

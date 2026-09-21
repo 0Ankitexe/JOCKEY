@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "status": "failure",
+  "file": null,
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "invalid-path-encoding",
+      "message": "input path must be valid UTF-8",
+      "location": null,
+      "label": null
+    }
+  ],
+  "truncated": {
+    "errors": false,
+    "warnings": false
+  },
+  "metadata": null
+}

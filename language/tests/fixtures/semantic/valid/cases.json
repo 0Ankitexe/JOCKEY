@@ -1,0 +1,26 @@
+[
+  {
+    "file": "all-types.jky"
+  },
+  {
+    "file": "generics.jky"
+  },
+  {
+    "file": "forward-qualified.jky"
+  },
+  {
+    "file": "shadowing.jky"
+  },
+  {
+    "file": "list-loop.jky"
+  },
+  {
+    "file": "all-paths.jky"
+  },
+  {
+    "file": "literals.jky"
+  },
+  {
+    "file": "planned-valid.jky"
+  }
+]

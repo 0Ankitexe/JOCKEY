@@ -1,0 +1,10 @@
+module arguments
+target windows | ubuntu
+fn first() -> int { return 1 }
+fn second() -> int { return 2 }
+fn pair(a: int, b: int) -> int { return a }
+fn main(target: endpoint) -> forensic_result {
+    pair(first(), second())
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints

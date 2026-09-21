@@ -1,0 +1,5 @@
+module missing_value
+target windows
+fn inspect() -> report {
+    return
+}

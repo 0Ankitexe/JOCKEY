@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0.0",
+  "program": {
+    "span": {
+      "start": 0,
+      "end": 144
+    },
+    "module": {
+      "name": {
+        "text": "questionable_return",
+        "span": {
+          "start": 7,
+          "end": 26
+        }
+      },
+      "span": {
+        "start": 0,
+        "end": 26
+      }
+    },
+    "target": {
+      "platforms": [
+        {
+          "kind": "windows",
+          "span": {
+            "start": 34,
+            "end": 41
+          }
+        },
+        {
+          "kind": "ubuntu",
+          "span": {
+            "start": 44,
+            "end": 50
+          }
+        }
+      ],
+      "span": {
+        "start": 27,
+        "end": 50
+      }
+    },
+    "functions": [
+      {
+        "name": {
+          "text": "answer",
+          "span": {
+            "start": 54,
+            "end": 60
+          }
+        },
+        "parameters": [],
+        "return_type": {
+          "kind": "result",
+          "ok": {
+            "kind": "named",
+            "name": {
+              "text": "report",
+              "span": {
+                "start": 73,
+                "end": 79
+              }
+            },
+            "span": {
+              "start": 73,
+              "end": 79
+            }
+          },
+          "error": {
+            "kind": "named",
+            "name": {
+              "text": "failure",
+              "span": {
+                "start": 81,
+                "end": 88
+              }
+            },
+            "span": {
+              "start": 81,
+              "end": 88
+            }
+          },
+          "span": {
+            "start": 66,
+            "end": 89
+          }
+        },
+        "body": {
+          "statements": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "boolean",
+                "value": false,
+                "span": {
+                  "start": 103,
+                  "end": 108
+                }
+              },
+              "span": {
+                "start": 96,
+                "end": 108
+              }
+            }
+          ],
+          "span": {
+            "start": 90,
+            "end": 110
+          }
+        },
+        "span": {
+          "start": 51,
+          "end": 110
+        }
+      }
+    ],
+    "run": {
+      "function": {
+        "text": "answer",
+        "span": {
+          "start": 115,
+          "end": 121
+        }
+      },
+      "destination": "selected_endpoints",
+      "destination_span": {
+        "start": 125,
+        "end": 143
+      },
+      "span": {
+        "start": 111,
+        "end": 143
+      }
+    }
+  }
+}

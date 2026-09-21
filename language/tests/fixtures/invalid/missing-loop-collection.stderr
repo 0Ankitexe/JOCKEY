@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/missing-loop-collection.jky:4:14
+   |
+4 |     for item in {
+   |              ^^ expected an expression

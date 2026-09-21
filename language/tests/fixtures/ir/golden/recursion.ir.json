@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0.0",
+  "language_version": "2.0.0",
+  "build_seed": "0",
+  "source": {
+    "label": "language/tests/fixtures/ir/golden/recursion.jky",
+    "byte_length": 286,
+    "sha256": "89d966dace2ebe32442f0835290b7019fc800013dd9b9479b11846051a83c4d6"
+  },
+  "registry": {
+    "schema_version": "1.0.0",
+    "fingerprint": "707d875d9b143f87d1be6c3f1abbe3307f5b7c67d9c59045de774af9f42941dc"
+  },
+  "module": {
+    "name": "recursive",
+    "span": {
+      "start": 0,
+      "end": 16
+    }
+  },
+  "targets": [
+    "windows",
+    "ubuntu"
+  ],
+  "profile": null,
+  "entry": 2,
+  "entry_metadata": {
+    "required_privilege": "user",
+    "capabilities": [],
+    "supported_platforms": [
+      "windows",
+      "ubuntu"
+    ],
+    "unavailable_dependencies": [],
+    "read_only": true,
+    "lab_only": false
+  },
+  "contracts": [],
+  "constants": [],
+  "functions": [
+    {
+      "name": "first",
+      "span": {
+        "start": 41,
+        "end": 112
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 50,
+            "end": 56
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 96,
+            "end": 110
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "d36d7699-9719-8dcc-aa8a-30f76ac48e3f",
+              "span": {
+                "start": 96,
+                "end": 110
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "source",
+                "function": 1
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "1482b31f-4ae7-8d5f-bcd3-a8e68110ea43",
+              "span": {
+                "start": 89,
+                "end": 110
+              },
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "second",
+      "span": {
+        "start": 113,
+        "end": 184
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 123,
+            "end": 129
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 169,
+            "end": 182
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "48536752-7649-8c9c-b009-4788fb337edf",
+              "span": {
+                "start": 169,
+                "end": 182
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "source",
+                "function": 0
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "e6659dcf-d9ca-8184-965f-57e87b2c2cb9",
+              "span": {
+                "start": 162,
+                "end": 182
+              },
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    },
+    {
+      "name": "main",
+      "span": {
+        "start": 185,
+        "end": 254
+      },
+      "parameters": [
+        0
+      ],
+      "result": {
+        "kind": "named",
+        "name": "forensic_result"
+      },
+      "slots": [
+        {
+          "type": {
+            "kind": "named",
+            "name": "endpoint"
+          },
+          "region": 0,
+          "kind": "parameter",
+          "name": "target",
+          "span": {
+            "start": 193,
+            "end": 199
+          }
+        },
+        {
+          "type": {
+            "kind": "named",
+            "name": "forensic_result"
+          },
+          "region": 0,
+          "kind": "temporary",
+          "name": null,
+          "span": {
+            "start": 239,
+            "end": 252
+          }
+        }
+      ],
+      "root_region": 0,
+      "regions": [
+        {
+          "instructions": [
+            {
+              "id": "dee312b9-315e-8d38-af4d-8d7d150d8e33",
+              "span": {
+                "start": 239,
+                "end": 252
+              },
+              "op": "call",
+              "destination": 1,
+              "callee": {
+                "kind": "source",
+                "function": 0
+              },
+              "arguments": [
+                0
+              ],
+              "on_error": "propagate"
+            },
+            {
+              "id": "0fb63a84-3e78-8b09-93db-fe5241ce41ba",
+              "span": {
+                "start": 232,
+                "end": 252
+              },
+              "op": "return",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "required_privilege": "user",
+        "capabilities": [],
+        "supported_platforms": [
+          "windows",
+          "ubuntu"
+        ],
+        "unavailable_dependencies": [],
+        "read_only": true,
+        "lab_only": false
+      }
+    }
+  ]
+}

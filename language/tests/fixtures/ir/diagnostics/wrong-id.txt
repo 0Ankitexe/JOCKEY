@@ -1,0 +1,4 @@
+error[IR_IDENTITY]: inconsistent instruction identity
+  --> ir/tests/fixtures/invalid/verifier/wrong-id.ir.json
+  IR pointer: /functions/0/regions/0/instructions/0/id
+  instruction: 00000000-0000-8000-8000-000000000000

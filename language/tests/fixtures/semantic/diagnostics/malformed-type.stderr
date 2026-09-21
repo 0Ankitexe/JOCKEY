@@ -1,0 +1,5 @@
+error[malformed-type]: malformed type
+  --> malformed-type.jky:3:19
+   |
+3 | fn inspect(items: list<>) -> report {
+   |                   ^^^^^^ expected a type

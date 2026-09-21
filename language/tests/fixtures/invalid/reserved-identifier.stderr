@@ -1,0 +1,5 @@
+error[unexpected-token]: unexpected token
+  --> language/tests/fixtures/invalid/reserved-identifier.jky:1:8
+   |
+1 | module fn
+   |        ^ expected a complete program

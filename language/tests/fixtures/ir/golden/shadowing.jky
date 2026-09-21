@@ -1,0 +1,11 @@
+module shadows
+target windows | ubuntu
+fn choose(x: int) -> int {
+    if true { let x = x return x }
+    else { let x = 2 return x }
+}
+
+fn main(target: endpoint) -> forensic_result {
+    return forensic.system.profile(target)
+}
+run main on selected_endpoints
