@@ -5,7 +5,7 @@
 Write investigation logic in a dedicated language, validate it before execution,
 and work toward consistent forensic results across operating systems.
 
-**Status:** Version 3 complete · **Next:** Portable Linux collectors · **Scope:** Authorised lab research
+**Status:** Working compiler and sample-data runner · **Next:** Linux collectors
 
 [Quick start](#quick-start) · [How it works](#how-it-works) · [Testing](#testing) · [Roadmap](#roadmap) · [Documentation](#documentation)
 
@@ -33,7 +33,7 @@ later. This roadmap is not a claim that collectors already work on those systems
 
 ## What works today
 
-| Area                     | Available in Version 3                                                                                            |
+| Area                     | Current functionality                                                                                             |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
 | Language                 | Modules, targets, typed functions, bindings, calls, conditions, bounded loops, returns and generic types          |
 | Static analysis          | Name resolution, argument/return type checks, platform restrictions, unused-binding and unreachable-code warnings |
@@ -45,8 +45,8 @@ later. This roadmap is not a claim that collectors already work on those systems
 | Controller and dashboard | Health/version API and a React status page; no investigation management yet                                       |
 
 The language currently recognises `windows` and `ubuntu` as target names.
-A generic `linux` target is planned for the next milestone through a versioned
-compatibility change.
+A generic `linux` target is planned. Existing programs will retain their current
+target behavior when support is added.
 
 ## A JOCKY program
 
@@ -74,17 +74,28 @@ native collectors. See the [language reference](docs/language-reference.md).
 
 ## How it works
 
-The implemented compiler and fixture path is:
+Each program passes through the following steps:
 
-```mermaid
-flowchart LR
-    A["JOCKY source"] --> B["Parser and AST"]
-    B --> C["Name and type checks"]
-    C --> D["Typed IR"]
-    D --> E["IR verifier"]
-    E --> F["Bounded fixture interpreter"]
-    G["Synthetic fixture data"] --> F
-    F --> H["JSON result or typed failure"]
+```text
+JOCKY source
+    |
+    v
+Parser and syntax tree
+    |
+    v
+Name and type checks
+    |
+    v
+Typed intermediate representation (IR)
+    |
+    v
+IR verification
+    |
+    v
+Bounded interpreter <--- Supplied sample data
+    |
+    v
+JSON result or a typed error
 ```
 
 The parser preserves source locations. Semantic analysis checks program meaning
@@ -285,10 +296,9 @@ curl --fail http://127.0.0.1:8000/health
 curl --fail http://127.0.0.1:8000/version
 ```
 
-The health response is `{"status":"ok"}`. The version response identifies the
-controller component; its package version is separate from the Version 3 product
-milestone. Only `GET /health` and `GET /version` are exposed; API documentation
-routes are disabled in this stage.
+The health response is `{"status":"ok"}`. The `/version` response returns the
+controller's name and package version. These are the only two API routes currently
+exposed; API documentation routes are disabled.
 
 ### Start the dashboard
 
@@ -414,7 +424,7 @@ controller/.venv/bin/python -m pytest tests/test_prepare_legacy_ast_schema.py
 | Dashboard           | Loading, successful responses, unavailable services, invalid responses and cancellation                       |
 | Preparation utility | Exact schema copying, idempotence, conflict refusal and failure handling                                      |
 
-Recorded local verification for the completed Version 3 baseline:
+Recorded local test results:
 
 | Component     | Result                                                         |
 | ------------- | -------------------------------------------------------------- |
@@ -424,8 +434,8 @@ Recorded local verification for the completed Version 3 baseline:
 | Quality gates | Rust/Python/TypeScript formatting, lint and type checks passed |
 | Compose       | Configuration validated; no live deployment claim              |
 
-See the [release evidence](docs/version-3-verification.md) and
-[CI guide](ci/README.md). Windows/Ubuntu GitHub Actions jobs are configured; these
+See the [CI guide](ci/README.md) for the checks used by the project.
+Windows/Ubuntu GitHub Actions jobs are configured; these
 local results do not establish that hosted jobs have passed. Fixture tests verify
 program behavior, not real-world evidence collection or detection accuracy.
 
@@ -448,16 +458,19 @@ program behavior, not real-world evidence collection or detection accuracy.
 
 ## Roadmap
 
-| Milestone      | Status / intended outcome                                                                        |
-| -------------- | ------------------------------------------------------------------------------------------------ |
-| Versions 0–3   | Complete: foundation, language, semantic analysis, IR and fixture execution                      |
-| Version 4      | Deferred Windows collectors; retained for Version 16                                             |
-| Version 5      | Next: portable Linux read-only collectors and an independently verified lab JSON report          |
-| Version 6      | Linux-native function packages                                                                   |
-| Versions 7–10  | Linux agents, controller tasking, dashboard and multi-endpoint results                           |
-| Versions 11–14 | Protected results, safe transformation research, trusted transport and controlled lab interfaces |
-| Version 15     | Integrated Linux demonstration and evaluation                                                    |
-| Version 16     | Windows collectors, packages, runtime and mixed-platform integration                             |
+The next priority is read-only Linux collection, followed by the components needed
+to run and manage investigations. Windows support will follow the Linux workflow.
+
+| Area                                                             | Status                                           |
+| ---------------------------------------------------------------- | ------------------------------------------------ |
+| Language, type checking and fixture execution                    | Available                                        |
+| Read-only Linux collectors and local evidence reports            | Next priority                                    |
+| Native Linux packages and endpoint runtime                       | Planned                                          |
+| Controller task management and investigation dashboard           | Planned                                          |
+| Multi-endpoint results, protected delivery and trusted transport | Planned                                          |
+| Safe compiler research and controlled lab interfaces             | Planned                                          |
+| Integrated Linux testing and demonstration                       | Planned                                          |
+| Windows collectors and mixed-platform investigations             | Deferred until the Linux workflow is established |
 
 The initial Linux collector plan targets documented x86_64/glibc VM configurations
 across Debian/Ubuntu, Fedora/a named RHEL-compatible distribution, and Arch Linux.
